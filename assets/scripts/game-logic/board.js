@@ -67,7 +67,6 @@ board.play(5)
 board.play(7)
 board.play(8)
 
-
 console.log(board.cells)
 console.log(board.over)
 board.clearBoard()
