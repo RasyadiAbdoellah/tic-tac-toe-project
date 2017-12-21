@@ -8,7 +8,11 @@ let currentPlayer = 'x'
 const play = function (index) {
   if (!board.collisionCheck(index)) {
     board.cells[index] = currentPlayer
-    currentPlayer = 'o'
+    if (currentPlayer === 'x') {
+      currentPlayer = 'o'
+    } else {
+      currentPlayer = 'x'
+    }
   }
   board.winCheck()
 }
@@ -22,3 +26,4 @@ play(1)
 play(3)
 // call below should prevent play
 play(5)
+console.log(board.cells)
