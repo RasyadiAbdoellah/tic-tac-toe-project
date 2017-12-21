@@ -12,14 +12,43 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+      <header>
+        <h1>Tic Tac Toe</h1>
+      </header>
+      <main class="container">
+        <div class="col-xs-12 col-sm-9">
+          <div class="row">
+            <div class="col-xs-4">0</div>
+            <div class="col-xs-4">1</div>
+            <div class="col-xs-4">2</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">3</div>
+            <div class="col-xs-4">4</div>
+            <div class="col-xs-4">5</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">6</div>
+            <div class="col-xs-4">7</div>
+            <div class="col-xs-4">8</div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <form id="sign-up">
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="text" name="credentials[password]" placeholder="password">
+            <input type="text" name="credentials[password_confirmation]" placeholder="confirm password">
+            <input type="submit" name="submit" value="register">
+          </form>
+          <form id="sign-in">
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="text" name="credentials[password]" placeholder="password">
+            <input type="submit" name="submit" value="sign in">
+          </form>
+          <form id="sign-out">
+            <input type="submit" name="submit" value="sign out">
+          </form>
+        </div>
+      </main>
     </body>
 </html>
