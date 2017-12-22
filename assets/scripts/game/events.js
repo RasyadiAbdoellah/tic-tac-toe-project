@@ -1,17 +1,17 @@
 // const getFormFields = require('../../lib/get-form-fields')
 const Game = require('./logic/proto')
+// const store = require('../store')
+
 const board = new Game()
 
 const onCellClick = function (event) {
   // console.log(event.target)
   const val = $(this).attr('data-value')
-  if (board.over !== true) {
+  if (!board.over && !board.collisionCheck(val)) {
     $(this).text(board.currentPlayer)
+    board.play(val)
   }
-  board.play(val)
   console.log(board.cells)
-
-
 }
 
 const addHandler = function (event) {

@@ -14,15 +14,13 @@ const Game = function () {
 Game.prototype.play = function (index) {
   this.turnCount++
   // console.log(this.turnCount)
-  if (this.over !== true) {
-    if (!this.collisionCheck(index)) {
-      this.cells[index] = this.currentPlayer
-      // win condition is assigned to a global variable
-      this.win = this.winCheck()
-      // this.currentPlayer is switched only if win is false
-      if (this.win !== true) {
-        this.currentPlayer === 'x' ? this.currentPlayer = 'o' : this.currentPlayer = 'x'
-      }
+  if (!this.over && !this.collisionCheck(index)) {
+    this.cells[index] = this.currentPlayer
+    // win condition is assigned to a global variable
+    this.win = this.winCheck()
+    // this.currentPlayer is switched only if win is false
+    if (this.win !== true) {
+      this.currentPlayer === 'x' ? this.currentPlayer = 'o' : this.currentPlayer = 'x'
     }
     // console.log(this.win)
   }
