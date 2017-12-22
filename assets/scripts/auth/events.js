@@ -8,27 +8,27 @@ const onSignUp = function (event) {
   event.preventDefault()
   console.log('sign up triggered')
   const data = getFormFields(event.target)
-  api.signUp(data).then(ui.onSignUpSuccess)
+  api.signUp(data).then(ui.onSignUpSuccess).catch(ui.onFailure)
 }
 
 const onSignIn = function (event) {
   event.preventDefault()
   console.log('sign in triggered')
   const data = getFormFields(event.target)
-  api.signIn(data).then(ui.onSignInSuccess)
+  api.signIn(data).then(ui.onSignInSuccess).catch(ui.onFailure)
 }
 
 const onChangePass = function (event) {
   event.preventDefault()
   console.log('change pw triggered')
   const data = getFormFields(event.target)
-  api.changePass(data).then(ui.onChangePassSuccess)
+  api.changePass(data).then(ui.onChangePassSuccess).catch(ui.onFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('sign out triggered')
-  api.signOut().then(ui.onSignOutSuccess)
+  api.signOut().then(ui.onSignOutSuccess).catch(ui.onFailure)
 }
 
 const addHandler = function (event) {
