@@ -1,4 +1,4 @@
-const Game = require('./proto')
+const Game = require('./logic/proto')
 
 const board = new Game()
 
