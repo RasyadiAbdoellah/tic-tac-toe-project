@@ -33,9 +33,11 @@ const onSignOut = function (event) {
 
 const addHandler = function (event) {
   // hide signed-in elements on page load
+  $('#sign-in').hide()
   $('#display-sign-up').hide()
   $('#change-password').hide()
   $('#sign-out').hide()
+  $('#sign-form-message').hide()
 
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
