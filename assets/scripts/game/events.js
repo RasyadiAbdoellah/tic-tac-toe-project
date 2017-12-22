@@ -1,10 +1,12 @@
 // const getFormFields = require('../../lib/get-form-fields')
-const board = require('./logic/proto')
+const Game = require('./logic/proto')
+const board = new Game()
 
 const onCellClick = function (event) {
   // console.log(event.target)
   const val = $(event.target).attr('data-value')
   board.play(val)
+  console.log(board.cells)
 }
 
 const addHandler = function (event) {

@@ -8,12 +8,12 @@ const Game = function () {
   this.over = false
   this.currentPlayer = 'x'
   this.win = false
-  this.turnCount = 0
+  // this.turnCount = 0 // used for debugging
 }
 
 Game.prototype.play = function (index) {
   this.turnCount++
-  console.log(this.turnCount)
+  // console.log(this.turnCount)
   if (this.over !== true) {
     if (!this.collisionCheck(index)) {
       this.cells[index] = this.currentPlayer
@@ -41,7 +41,7 @@ Game.prototype.clearBoard = function () {
   this.over = false
   this.currentPlayer = 'x'
   this.win = false
-  this.turnCount = 0
+  // this.turnCount = 0 // used for debugging
 }
 // horizontalCheck checks if all values in a row match. assumes value is NOT undefined
 Game.prototype.horizontalCheck = function (index) {
@@ -62,6 +62,15 @@ Game.prototype.verticalCheck = function (index) {
   }
 }
 
+Game.prototype.stalemateCheck = function () {
+  if (this.cells.every(isNotEmpty)) {
+    console.log('stalemate check')
+    this.over = true
+    // returns stalemate token
+    return true
+  }
+}
+
 Game.prototype.winCheck = function () {
   // winCheck checks for vertical, horizontal, or diagonal matches
   // toggles the over property if cells is completely filled or win condition is met
@@ -75,7 +84,7 @@ Game.prototype.winCheck = function () {
     // console.log('isNotEmpty:', isNotEmpty(this.cells[i]))
     if (isNotEmpty(this.cells[i])) {
       if (this.horizontalCheck(i)) {
-        return this.horizontalCheck(i)
+        return true
       }
     }
   }
@@ -87,7 +96,7 @@ Game.prototype.winCheck = function () {
     // console.log('isNotEmpty:', isNotEmpty(this.cells[i]))
     if (isNotEmpty(this.cells[i])) {
       if (this.verticalCheck(i)) {
-        return this.verticalCheck(i)
+        return true
       }
     }
   }
@@ -111,10 +120,7 @@ Game.prototype.winCheck = function () {
     return true
   }
   // checks for stalemate
-  if (this.cells.every(isNotEmpty)) {
-    console.log('stalemate check')
-    this.over = true
-    // returns stalemate token
+  if (this.stalemateCheck()) {
     return 0
   }
 }
