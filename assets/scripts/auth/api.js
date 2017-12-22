@@ -18,6 +18,15 @@ const signIn = function (data) {
   })
 }
 
+const changePass = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/change-password/' + store.user.id,
+    method: 'PATCH',
+    headers: { Authorization: 'Token token=' + store.user.token },
+    data
+  })
+}
+
 const signOut = function () {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
@@ -29,5 +38,6 @@ const signOut = function () {
 module.exports = {
   signUp,
   signIn,
+  changePass,
   signOut
 }

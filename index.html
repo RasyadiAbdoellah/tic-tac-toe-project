@@ -77,12 +77,19 @@
             <input type="text" name="credentials[password_confirmation]" placeholder="confirm password">
             <input type="submit" name="submit" value="register">
           </form>
-          <form id="sign-in">
+          <form id="sign-in" style="display: none">
             <input type="text" name="credentials[email]" placeholder="email">
             <input type="text" name="credentials[password]" placeholder="password">
             <input type="submit" name="submit" value="sign in">
           </form>
-          <form id="sign-out">
+          <div id="display-sign-in">Have and account? <a href="#">Sign in</a></div>
+          <div id="display-sign-up"><a href="#">Click here</a> to make a new account</div>
+          <form id="change-password" style="display: none">
+            <input type="text" name="passwords[old]" placeholder="old password">
+            <input type="text" name="passwords[new]" placeholder="new password">
+            <input type="submit" name="submit" value="update">
+          </form>
+          <form id="sign-out" style="display: none">
             <input type="submit" name="submit" value="sign out">
           </form>
         </div>
