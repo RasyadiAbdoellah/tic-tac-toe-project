@@ -4,9 +4,14 @@ const board = new Game()
 
 const onCellClick = function (event) {
   // console.log(event.target)
-  const val = $(event.target).attr('data-value')
+  const val = $(this).attr('data-value')
+  if (board.over !== true) {
+    $(this).text(board.currentPlayer)
+  }
   board.play(val)
   console.log(board.cells)
+
+
 }
 
 const addHandler = function (event) {
