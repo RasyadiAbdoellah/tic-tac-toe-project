@@ -2,28 +2,26 @@
 
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
+const ui = require('./ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
   console.log('sign up triggered')
   const data = getFormFields(event.target)
-  api.signUp(data).then((data) => {
-    console.log(data)
-  })
+  api.signUp(data).then(ui.onSignUpSuccess)
 }
 
 const onSignIn = function (event) {
   event.preventDefault()
   console.log('sign in triggered')
   const data = getFormFields(event.target)
-  api.signIn(data).then((data) => {
-    console.log(data)
-  })
+  api.signIn(data).then(ui.onSignInSuccess)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('sign out triggered')
+  api.signOut().then(ui.onSignOutSuccess)
 }
 
 const addHandler = function (event) {
