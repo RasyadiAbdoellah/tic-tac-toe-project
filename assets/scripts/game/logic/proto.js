@@ -33,14 +33,16 @@ Game.prototype.play = function (index) {
     }
   }
 }
-// this reset function
-Game.prototype.clearBoard = function () {
-  this.cells = ['', '', '', '', '', '', '', '', '']
-  this.over = false
-  this.currentPlayer = 'x'
-  this.win = false
-  // this.turnCount = 0 // used for debugging
-}
+
+// reset function
+// Game.prototype.clearBoard = function () {
+//   this.cells = ['', '', '', '', '', '', '', '', '']
+//   this.over = false
+//   this.currentPlayer = 'x'
+//   this.win = false
+//   // this.turnCount = 0 // used for debugging
+// }
+
 // horizontalCheck checks if all values in a row match. assumes value is NOT undefined
 Game.prototype.horizontalCheck = function (index) {
   if (this.cells[index] === this.cells[index + 1] && this.cells[index] === this.cells[index + 2]) {

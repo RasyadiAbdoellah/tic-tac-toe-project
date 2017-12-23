@@ -6,7 +6,9 @@
 .cell {
   border: 3px solid #000;
   box-sizing: border-box;
-  padding-bottom: 30%; // = width for a 1:1 aspect ratio
+  padding: 15% 0; // = width for a 1:1 aspect ratio
+  text-align: center;
+//  font-size: 300%;
 }
 
 .cell-content {
