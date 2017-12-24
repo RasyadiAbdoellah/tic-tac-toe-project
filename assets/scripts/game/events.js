@@ -49,8 +49,7 @@ const onClearBoard = function () {
 
 const onClearBoard = function () {
   board.clearBoard()
-  $('.cell').children('.cell-content').text('')
-  $('#game-alert').removeClass().addClass('alert alert-info').text('New game! X Player\'s turn.')
+  ui.resetBoardUi()
 }
 
 const addHandler = function (event) {
