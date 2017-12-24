@@ -1,5 +1,6 @@
 // const getFormFields = require('../../lib/get-form-fields')
 const Game = require('./logic/proto')
+const ui = require('./ui')
 // const store = require('../store')
 
 const board = new Game()
@@ -12,15 +13,14 @@ const onCellClick = function (event) {
     $(this).children('.cell-content').text(board.currentPlayer.toUpperCase())
 
     board.play(val)
-
-    $('#game-alert').removeClass().addClass('alert alert-info').text(board.currentPlayer.toUpperCase() + ' player\'s turn.')
+    ui.toggleCurrentPlayerAlert(board)
   } else if (!board.over && board.collisionCheck(val)) {
-    $('#game-alert').removeClass().addClass('alert alert-danger').text('Please select a valid space.')
+    ui.showInvalidMoveWarning()
   }
   if (board.winCheck()) {
-    $('#game-alert').removeClass().addClass('alert alert-info').text('Game over! 'board.currentPlayer.toUpperCase() + ' player won!')
+    ui.showWinMessage(board)
   } else if (board.winCheck() === 0) {
-    $('#game-alert').removeClass().addClass('alert alert-info').text('Stalemate!')
+    ui.showStalemateMessage()
   }
 
   // $('#game-alert').fadeIn(100).delay(1000).fadeOut(100)
@@ -29,8 +29,7 @@ const onCellClick = function (event) {
 
 const onClearBoard = function () {
   board.clearBoard()
-  $('.cell').children('.cell-content').text('')
-  $('#game-alert').removeClass().addClass('alert alert-info').text('New game! X Player\'s turn.')
+  ui.resetBoardUi()
 }
 
 const addHandler = function (event) {
