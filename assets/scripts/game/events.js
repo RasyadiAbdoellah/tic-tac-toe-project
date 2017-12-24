@@ -13,12 +13,12 @@ const onCellClick = function (event) {
 
     board.play(val)
 
-    $('#game-alert').removeClass().addClass('alert alert-info').text(board.currentPlayer.toUpperCase() + ' player\'s turn')
+    $('#game-alert').removeClass().addClass('alert alert-info').text(board.currentPlayer.toUpperCase() + ' player\'s turn.')
   } else if (!board.over && board.collisionCheck(val)) {
-    $('#game-alert').removeClass().addClass('alert alert-danger').text('Please select a valid space')
+    $('#game-alert').removeClass().addClass('alert alert-danger').text('Please select a valid space.')
   }
   if (board.winCheck()) {
-    $('#game-alert').removeClass().addClass('alert alert-info').text(board.currentPlayer.toUpperCase() + ' player won!')
+    $('#game-alert').removeClass().addClass('alert alert-info').text('Game over! 'board.currentPlayer.toUpperCase() + ' player won!')
   } else if (board.winCheck() === 0) {
     $('#game-alert').removeClass().addClass('alert alert-info').text('Stalemate!')
   }
@@ -30,7 +30,7 @@ const onCellClick = function (event) {
 const onClearBoard = function () {
   board.clearBoard()
   $('.cell').children('.cell-content').text('')
-  $('#game-alert').removeClass().addClass('alert').text('')
+  $('#game-alert').removeClass().addClass('alert alert-info').text('New game! X Player\'s turn.')
 }
 
 const addHandler = function (event) {
