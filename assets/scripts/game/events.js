@@ -47,6 +47,12 @@ const onClearBoard = function () {
   board.clearBoard()
 }
 
+const onClearBoard = function () {
+  board.clearBoard()
+  $('.cell').children('.cell-content').text('')
+  $('#game-alert').removeClass().addClass('alert').text('')
+}
+
 const addHandler = function (event) {
   // $('#game-alert').hide()
 
