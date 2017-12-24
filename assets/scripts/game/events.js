@@ -13,22 +13,12 @@ const onCellClick = function (event) {
     $(this).children('.cell-content').text(board.currentPlayer.toUpperCase())
 
     board.play(val)
-<<<<<<< HEAD
     ui.toggleCurrentPlayerAlert(board)
   } else if (!board.over && board.collisionCheck(val)) {
     ui.showInvalidMoveWarning()
   }
   if (board.winCheck()) {
     ui.showWinMessage(board)
-=======
-
-    $('#game-alert').removeClass().addClass('alert alert-info').text(board.currentPlayer.toUpperCase() + ' player\'s turn.')
-  } else if (!board.over && board.collisionCheck(val)) {
-    $('#game-alert').removeClass().addClass('alert alert-danger').text('Please select a valid space.')
-  }
-  if (board.winCheck()) {
-    $('#game-alert').removeClass().addClass('alert alert-info').text('Game over! 'board.currentPlayer.toUpperCase() + ' player won!')
->>>>>>> UI Fixes to game alerts
   } else if (board.winCheck() === 0) {
     ui.showStalemateMessage()
   }
@@ -39,12 +29,7 @@ const onCellClick = function (event) {
 
 const onClearBoard = function () {
   board.clearBoard()
-<<<<<<< HEAD
   ui.resetBoardUi()
-=======
-  $('.cell').children('.cell-content').text('')
-  $('#game-alert').removeClass().addClass('alert alert-info').text('New game! X Player\'s turn.')
->>>>>>> UI Fixes to game alerts
 }
 
 const addHandler = function (event) {
