@@ -6,16 +6,15 @@
 .cell {
   border: 3px solid #000;
   box-sizing: border-box;
-  padding: 15% 0; // = width for a 1:1 aspect ratio
-  text-align: center;
-//  font-size: 300%;
+  padding: 0 0 30%; // = width for a 1:1 aspect ratio
 }
 
 .cell-content {
-  height: 90%; // = 100% - 2*5% padding
-  padding: 40% 0;
+  font-size: 400%;
+  height: 100%; // = 100% - 2*5% padding
+  padding: 10%;
   position: absolute;
   text-align: center;
-  width: 90%; // = 100% - 2*5% padding
+  width: 100%; // = 100% - 2*5% padding
 
 }
