@@ -1,7 +1,7 @@
 // const getFormFields = require('../../lib/get-form-fields')
 const Game = require('./logic/proto')
 const ui = require('./ui')
-// const store = require('../store')
+const store = require('../store')
 
 const board = new Game()
 
@@ -29,7 +29,14 @@ const onCellClick = function (event) {
 
 const onClearBoard = function () {
   board.clearBoard()
-  ui.resetBoardUi()
+  if (typeof store.user !== 'undefined') {
+    // api.createGame()
+    ui.resetBoardUi()
+    console.log('new game created on server')
+  } else {
+    ui.resetBoardUi()
+    console.log('Local game created')
+  }
 }
 
 const addHandler = function (event) {
