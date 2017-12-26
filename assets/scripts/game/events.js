@@ -2,6 +2,7 @@
 const Game = require('./logic/proto')
 const ui = require('./ui')
 const store = require('../store')
+const api = require('./api')
 
 const board = new Game()
 
@@ -24,15 +25,18 @@ const onCellClick = function (event) {
   }
 
   // $('#game-alert').fadeIn(100).delay(1000).fadeOut(100)
-  console.log(board.cells)
+  // console.log(board.cells)
+}
+const returnToStore = function (data) {
+  store.game = data.game
+  console.log(store.game)
 }
 
 const onClearBoard = function () {
   board.clearBoard()
   if (typeof store.user !== 'undefined') {
-    // api.createGame()
     ui.resetBoardUi()
-    console.log('new game created on server')
+    api.createGame().then(returnToStore)
   } else {
     ui.resetBoardUi()
     console.log('Local game created')

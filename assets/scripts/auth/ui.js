@@ -20,7 +20,7 @@ const onSignUpSuccess = function (data) {
 
 const onSignInSuccess = function (data) {
   store.user = data.user
-  console.log(store.user)
+  // console.log(store.user)
   // explicitely hide the form message on success
   $('#sign-form-message').hide()
 
