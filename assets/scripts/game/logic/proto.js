@@ -10,6 +10,12 @@ const Game = function () {
   this.win = false
   // this.turnCount = 0 // used for debugging
 }
+Game.prototype.switchToken = function () {
+  // this.currentPlayer is switched only if win is false
+  if (this.win !== true) {
+    this.currentPlayer === 'x' ? this.currentPlayer = 'o' : this.currentPlayer = 'x'
+  }
+}
 
 Game.prototype.play = function (index) {
   this.turnCount++
@@ -18,10 +24,7 @@ Game.prototype.play = function (index) {
     this.cells[index] = this.currentPlayer
     // win condition is assigned to a global variable
     this.win = this.winCheck()
-    // this.currentPlayer is switched only if win is false
-    if (this.win !== true) {
-      this.currentPlayer === 'x' ? this.currentPlayer = 'o' : this.currentPlayer = 'x'
-    }
+
     // console.log(this.win)
   }
   if (this.win === true || this.over === true) {

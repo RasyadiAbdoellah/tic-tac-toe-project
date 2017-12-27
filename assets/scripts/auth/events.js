@@ -3,6 +3,8 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const gameApi = require('../game/api')
+const store = require('../store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -15,7 +17,13 @@ const onSignIn = function (event) {
   event.preventDefault()
   console.log('sign in triggered')
   const data = getFormFields(event.target)
-  api.signIn(data).then(ui.onSignInSuccess).catch(ui.onFailure)
+  api.signIn(data).then(ui.onSignInSuccess)
+    .then(() => {
+      gameApi.createGame()
+        .then(data => {
+          store.game = data.game
+        })
+    }).catch(ui.onFailure)
 }
 
 const onChangePass = function (event) {
@@ -33,8 +41,8 @@ const onSignOut = function (event) {
 
 const addHandler = function (event) {
   // hide signed-in elements on page load
-  $('#sign-in').hide()
-  $('#display-sign-up').hide()
+  $('#sign-up').hide()
+  $('#display-sign-in').hide()
   $('#change-password').hide()
   $('#sign-out').hide()
   $('#sign-form-message').hide()
