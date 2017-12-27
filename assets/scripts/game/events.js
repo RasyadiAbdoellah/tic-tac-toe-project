@@ -46,7 +46,7 @@ const onClearBoard = function () {
       .catch(error => { console.log(error) })
   } else {
     ui.resetBoardUi()
-    console.log('Local game created')
+    // console.log('Local game created')
   }
   board.clearBoard()
 }
