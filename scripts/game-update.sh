@@ -10,7 +10,7 @@ curl "http://tic-tac-toe.wdibos.com/games/22548" \
   --data '{
   "game": {
     "cell": {
-      "index": "6",
+      "index": "'"${INDEX}"'",
       "value": "x"
     },
     "over": "true"
