@@ -75,7 +75,7 @@
         <div class="col-xs-12 col-sm-4">
           <div id="sign-in-panel" class="panel panel-default">
               <div class="panel-body">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs nav-justified">
                   <li class="active"><a href="#sign-in-tab" data-toggle="tab">Sign in</a></li>
                   <li><a href="#sign-up-tab" data-toggle="tab">Register</a></li>
                 </ul>
@@ -88,7 +88,7 @@
                       <fieldset class="form-group">
                         <input type="text" name="credentials[password]" placeholder="password" class="form-control">
                       </fieldset>
-                      <input type="submit" name="submit" value="sign in" class="btn btn-primary btn-block">
+                      <input type="submit" name="submit" value="Sign in" class="btn btn-primary btn-block">
                     </form>
                   </div>
                   <div id="sign-up-tab" class="tab-pane fade">
@@ -100,7 +100,7 @@
                         <input type="text" name="credentials[password]" placeholder="password" class="form-control">
                         <input type="text" name="credentials[password_confirmation]" placeholder="confirm password" class="form-control">
                       </fieldset>
-                      <input type="submit" name="submit" value="register" class="btn btn-primary btn-block">
+                      <input type="submit" name="submit" value="Register" class="btn btn-primary btn-block">
                     </form>
                   </div>
               </div>
@@ -109,13 +109,15 @@
 
           <div id="user-panel" class="panel panel-default">
             <div class=panel-body>
+              <button id="get-stats">Get player stats</button>
               <form id="change-password">
                 <legend>Change your password</legend>
-                <input type="text" name="passwords[old]" placeholder="old password">
-                <input type="text" name="passwords[new]" placeholder="new password">
-                <input type="submit" name="submit" value="update">
+                <fieldset class="form-group">
+                  <input type="text" name="passwords[old]" placeholder="old password" class="form-control">
+                  <input type="text" name="passwords[new]" placeholder="new password" class="form-control">
+                </fieldset>
+                <input type="submit" name="submit" value="update" class="btn btn-primary btn-block">
               </form>
-              <button id="get-stats">Get player stats</button>
               <form id="sign-out">
               <input type="submit" name="submit" value="sign out" class="btn btn-block">
             </form>
