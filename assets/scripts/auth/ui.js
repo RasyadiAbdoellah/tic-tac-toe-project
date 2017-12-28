@@ -5,12 +5,6 @@ const gameUi = require('../game/ui')
 const onSignUpSuccess = function (data) {
   console.log(data)
   // explicitly hide and show the elements we want
-  $('#sign-up').hide() // hide sign-up field on success
-  $('#sign-in').show() // show sign in field on success
-
-  // display the right toggle message on success
-  $('#display-sign-in').hide()
-  $('#display-sign-up').show()
 
   // show form message
   $('#sign-form-message').removeClass()
@@ -31,15 +25,17 @@ const onSignInSuccess = function (data) {
   $('#sign-form-message').addClass('alert alert-success')
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').text('Signed in. Welcome!')
-  // toggle signed in user's functionality
+  // toggle signed in user functionality
+  $('#sign-in-panel').toggle()
   $('#change-password').toggle()
   $('#sign-out').toggle()
-  $('#sign-in').toggle()
-  $('#display-sign-up').toggle()
   $('#get-stats').toggle()
 
   // reset the board
   gameUi.resetBoardUi()
+
+  // change text in new game button
+  $('#reset-board').text('New online game')
 }
 
 const onChangePassSuccess = function () {
@@ -58,25 +54,14 @@ const onSignOutSuccess = function () {
   // console.log(store.user)
   $('#change-password').toggle()
   $('#sign-out').toggle()
-  $('#sign-in').toggle()
-  $('#display-sign-up').toggle()
+  $('#get-stats').toggle()
+  $('#sign-in-panel').toggle()
 
   // display success message
   $('#sign-form-message').removeClass()
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').addClass('alert alert-success')
   $('#sign-form-message').text('Signed out. Goodbye!')
-}
-
-const signFormToggle = function () {
-  //  always hides the alert message
-  $('#sign-form-message').hide()
-
-  // toggle functionality below
-  $('#sign-up').toggle()
-  $('#sign-in').toggle()
-  $('#display-sign-in').toggle()
-  $('#display-sign-up').toggle()
 }
 
 const onFailure = function () {
@@ -92,6 +77,5 @@ module.exports = {
   onSignInSuccess,
   onChangePassSuccess,
   onSignOutSuccess,
-  signFormToggle,
   onFailure
 }
