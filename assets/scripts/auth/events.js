@@ -41,7 +41,7 @@ const onSignOut = function (event) {
 
 const addHandler = function (event) {
   // hide elements on page load
-  $('#user-panel').hide()
+  //  $('#user-panel').hide() // comment out to show panel without signing in
 
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
