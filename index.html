@@ -108,19 +108,25 @@
           </div>
 
           <div id="user-panel" class="panel panel-default">
-            <div class=panel-body>
-              <button id="get-stats">Get player stats</button>
-              <form id="change-password">
-                <legend>Change your password</legend>
-                <fieldset class="form-group">
-                  <input type="text" name="passwords[old]" placeholder="old password" class="form-control">
-                  <input type="text" name="passwords[new]" placeholder="new password" class="form-control">
-                </fieldset>
-                <input type="submit" name="submit" value="update" class="btn btn-primary btn-block">
-              </form>
+            <button id="get-stats">Get player stats</button>
+            <div class="panel-heading text-center">
+              <h3 class="panel-title"><a data-toggle="collapse" href="#change-pass-panel">Change password</a></h3>
+            </div>
+            <div id="change-pass-panel" class="panel-collapse collapse">
+              <div class="panel-body">
+                <form id="change-password">
+                  <fieldset class="form-group">
+                    <input type="text" name="passwords[old]" placeholder="old password" class="form-control">
+                    <input type="text" name="passwords[new]" placeholder="new password" class="form-control">
+                  </fieldset>
+                  <input type="submit" name="submit" value="update" class="btn btn-primary btn-block">
+                </form>
+              </div>
+            </div>
+            <div class="panel-body">
               <form id="sign-out">
-              <input type="submit" name="submit" value="sign out" class="btn btn-block">
-            </form>
+                <input type="submit" name="submit" value="sign out" class="btn btn-block">
+              </form>
             </div>
           </div>
 
