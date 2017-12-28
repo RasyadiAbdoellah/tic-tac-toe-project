@@ -26,10 +26,8 @@ const onSignInSuccess = function (data) {
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').text('Signed in. Welcome!')
   // toggle signed in user functionality
+  $('#user-panel').toggle()
   $('#sign-in-panel').toggle()
-  $('#change-password').toggle()
-  $('#sign-out').toggle()
-  $('#get-stats').toggle()
 
   // reset the board
   gameUi.resetBoardUi()
@@ -51,9 +49,7 @@ const onChangePassSuccess = function () {
 const onSignOutSuccess = function () {
   store.user = null
   console.log(store.user)
-  $('#change-password').toggle()
-  $('#sign-out').toggle()
-  $('#get-stats').toggle()
+  $('#user-panel').toggle()
   $('#sign-in-panel').toggle()
 
   // display success message
@@ -61,6 +57,9 @@ const onSignOutSuccess = function () {
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').addClass('alert alert-success')
   $('#sign-form-message').text('Signed out. Goodbye!')
+
+  // change text in new game button
+  $('#reset-board').text('New local game')
 }
 
 const onFailure = function () {

@@ -41,10 +41,7 @@ const onSignOut = function (event) {
 
 const addHandler = function (event) {
   // hide elements on page load
-  $('#change-password').hide()
-  $('#sign-out').hide()
-  $('#sign-form-message').hide()
-  $('#get-stats').hide()
+  $('#user-panel').hide()
 
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)

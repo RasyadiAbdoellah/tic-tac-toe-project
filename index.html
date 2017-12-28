@@ -107,18 +107,21 @@
             </div>
           </div>
 
-            <form id="change-password">
-              <legend>Change your password</legend>
-              <input type="text" name="passwords[old]" placeholder="old password">
-              <input type="text" name="passwords[new]" placeholder="new password">
-              <input type="submit" name="submit" value="update">
+          <div id="user-panel" class="panel panel-default">
+            <div class=panel-body>
+              <form id="change-password">
+                <legend>Change your password</legend>
+                <input type="text" name="passwords[old]" placeholder="old password">
+                <input type="text" name="passwords[new]" placeholder="new password">
+                <input type="submit" name="submit" value="update">
+              </form>
+              <button id="get-stats">Get player stats</button>
+              <form id="sign-out">
+              <input type="submit" name="submit" value="sign out" class="btn btn-block">
             </form>
-            <form id="sign-out">
-              <legend>Sign out</legend>
-              <input type="submit" name="submit" value="sign out">
-            </form>
+            </div>
+          </div>
 
-            <button id="get-stats">Get player stats</button>
             <button id="reset-board" class="btn btn-block">New local game</button>
             <p id="sign-form-message" class="alert"></p>
 
