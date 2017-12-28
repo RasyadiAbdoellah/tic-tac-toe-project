@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const gameUi = require('../game/ui')
 
 const onSignUpSuccess = function (data) {
   console.log(data)
@@ -30,12 +31,15 @@ const onSignInSuccess = function (data) {
   $('#sign-form-message').addClass('alert alert-success')
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').text('Signed in. Welcome!')
-  // toggle the a signed in user's functionality
+  // toggle signed in user's functionality
   $('#change-password').toggle()
   $('#sign-out').toggle()
   $('#sign-in').toggle()
   $('#display-sign-up').toggle()
   $('#get-stats').toggle()
+
+  // reset the board
+  gameUi.resetBoardUi()
 }
 
 const onChangePassSuccess = function () {
