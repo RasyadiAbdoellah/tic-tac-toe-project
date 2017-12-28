@@ -1,0 +1,33 @@
+.top-row {
+  border-bottom: 3px solid $grid-border-color;
+  box-sizing: border-box;
+}
+
+.bottom-row {
+  border-top: 3px solid $grid-border-color;
+  box-sizing: border-box;
+}
+
+.left-cell {
+  border-right: 3px solid $grid-border-color;
+  box-sizing: border-box;
+}
+
+.right-cell {
+  border-left: 3px solid $grid-border-color;
+  box-sizing: border-box;
+}
+
+.cell {
+  padding: 0 0 30%; // = width for a 1:1 aspect ratio
+}
+
+.cell-content {
+  font-size: 400%;
+  height: 100%; // = 100% - 2*5% padding
+  padding: 10%;
+  position: absolute;
+  text-align: center;
+  width: 100%; // = 100% - 2*5% padding
+
+}
