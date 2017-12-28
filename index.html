@@ -18,8 +18,10 @@
         <h1>Tic Tac Toe</h1>
       </header>
 
-      <main class="container board">
-        <div class="col-xs-12 col-sm-8 text-center">
+      <main class="container">
+        <div class="col-xs-12 col-sm-8 text-center board">
+
+          <p id="game-alert" class="game-message text-info">New local game! Sign in to save progress. X Player\'s turn.</p>
 
           <div class="row text-left top-row">
 
@@ -68,24 +70,37 @@
             </div>
 
           </div>
-          <p id="game-alert" class="alert alert-info">New game! X Player's turn</p>
+
         </div>
         <div class="col-xs-12 col-sm-4">
-
-          <form id="sign-up">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form id="sign-up">
             <legend>Sign up</legend>
-            <input type="text" name="credentials[email]" placeholder="email">
-            <input type="text" name="credentials[password]" placeholder="password">
-            <input type="text" name="credentials[password_confirmation]" placeholder="confirm password">
-            <input type="submit" name="submit" value="register">
-          </form>
-          <form id="sign-in">
-            <legend>Sign in</legend>
-            <input type="text" name="credentials[email]" placeholder="email">
-            <input type="text" name="credentials[password]" placeholder="password">
-            <input type="submit" name="submit" value="sign in">
+            <fieldset class="form-group">
+              <input type="text" name="credentials[email]" placeholder="email" class="form-control">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="credentials[password]" placeholder="password" class="form-control">
+              <input type="text" name="credentials[password_confirmation]" placeholder="confirm password" class="form-control">
+            </fieldset>
+            <input type="submit" name="submit" value="register" class="btn btn-primary btn-block">
           </form>
 
+              <form id="sign-in">
+            <legend>Sign in</legend>
+            <fieldset class="form-group">
+              <input type="text" name="credentials[email]" placeholder="email" class="form-control">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="credentials[password]" placeholder="password" class="form-control">
+            </fieldset>
+            <input type="submit" name="submit" value="sign in" class="btn btn-primary btn-block">
+          </form>
+              <div id="display-sign-in"><a href="#">Have an account? Click here to sign in</a></div>
+              <div id="display-sign-up"><a href="#">Click here to make a new account</a></div>
+            </div>
+          </div>
 
           <form id="change-password">
             <legend>Change your password</legend>
@@ -97,9 +112,6 @@
             <legend>Sign out</legend>
             <input type="submit" name="submit" value="sign out">
           </form>
-
-          <div id="display-sign-in"><a href="#">Click here</a> to sign in</div>
-          <div id="display-sign-up"><a href="#">Click here</a> to make a new account</div>
 
           <button id="reset-board">New game</button>
           <button id="get-stats">Get player stats</button>
