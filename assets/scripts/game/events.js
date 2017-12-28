@@ -6,10 +6,6 @@ const api = require('./api')
 
 const board = new Game()
 
-const placeTokenInCell = function (currentCell) {
-  currentCell.children('.cell-content').text(board.currentPlayer.toUpperCase())
-}
-
 const onCellClick = function (event) {
   // console.log(event.target)
   const currentCell = $(this)
@@ -17,13 +13,13 @@ const onCellClick = function (event) {
   if (!board.over && !board.collisionCheck(cellVal)) {
     if (store.user === undefined) {
       board.play(cellVal)
-      placeTokenInCell(currentCell)
+      ui.placeTokenInCell(currentCell, board.currentPlayer.toUpperCase())
     } else {
       board.play(cellVal)
       api.updateState(board, cellVal).then(data => {
         store.game = data.game
         console.log(store.game)
-      }).then(placeTokenInCell(currentCell))
+      }).then(ui.placeTokenInCell(currentCell, board.currentPlayer.toUpperCase()))
         .catch((error) => { console.log(error) })
     }
     board.switchToken()
@@ -51,11 +47,20 @@ const onClearBoard = function () {
   board.clearBoard()
 }
 
+const onGetStats = function () {
+  api.getStats()
+    .then(data => {
+      store.games = data.games
+      console.log(store.games)
+    })
+}
+
 const addHandler = function (event) {
   // $('#game-alert').hide()
 
   $('.cell').on('click', onCellClick)
   $('#reset-board').on('click', onClearBoard)
+  $('#get-stats').on('click', onGetStats)
 }
 
 module.exports = {

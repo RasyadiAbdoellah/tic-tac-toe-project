@@ -26,10 +26,15 @@ const resetBoardUi = function () {
   }
 }
 
+const placeTokenInCell = function (currentCell, playerToken) {
+  currentCell.children('.cell-content').text(playerToken)
+}
+
 module.exports = {
   toggleCurrentPlayerAlert,
   showInvalidMoveWarning,
   showWinMessage,
   showStalemateMessage,
-  resetBoardUi
+  resetBoardUi,
+  placeTokenInCell
 }
