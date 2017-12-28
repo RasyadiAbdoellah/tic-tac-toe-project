@@ -27,14 +27,15 @@ const onSignInSuccess = function (data) {
   // display success message
   // clear all classes
   $('#sign-form-message').removeClass()
-  $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').addClass('alert alert-success')
+  $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').text('Signed in. Welcome!')
   // toggle the a signed in user's functionality
   $('#change-password').toggle()
   $('#sign-out').toggle()
   $('#sign-in').toggle()
   $('#display-sign-up').toggle()
+  $('#get-stats').toggle()
 }
 
 const onChangePassSuccess = function () {
