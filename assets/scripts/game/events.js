@@ -29,6 +29,13 @@ const onCellClick = function (event) {
   }
   if (board.winCheck()) {
     ui.showWinMessage(board)
+
+    $('#game-alert').removeClass().addClass('alert alert-info').text(board.currentPlayer.toUpperCase() + ' player\'s turn.')
+  } else if (!board.over && board.collisionCheck(val)) {
+    $('#game-alert').removeClass().addClass('alert alert-danger').text('Please select a valid space.')
+  }
+  if (board.winCheck()) {
+    $('#game-alert').removeClass().addClass('alert alert-info').text('Game over! 'board.currentPlayer.toUpperCase() + ' player won!')
   } else if (board.winCheck() === 0) {
     ui.showStalemateMessage()
   }
