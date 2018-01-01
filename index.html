@@ -71,6 +71,7 @@
 
           </div>
 
+          <button id="reset-board" class="btn btn-lg margin-top">New local game</button>
         </div>
         <div class="col-xs-12 col-sm-4">
           <div id="sign-in-panel" class="panel panel-default">
@@ -107,30 +108,36 @@
             </div>
           </div>
 
-          <div id="user-panel" class="panel panel-default">
-            <button id="get-stats">Get player stats</button>
-            <div class="panel-heading text-center">
-              <h3 class="panel-title"><a data-toggle="collapse" href="#change-pass-panel">Change password</a></h3>
-            </div>
-            <div id="change-pass-panel" class="panel-collapse collapse">
-              <div class="panel-body">
-                <form id="change-password">
-                  <fieldset class="form-group">
-                    <input type="text" name="passwords[old]" placeholder="old password" class="form-control">
-                    <input type="text" name="passwords[new]" placeholder="new password" class="form-control">
-                  </fieldset>
-                  <input type="submit" name="submit" value="update" class="btn btn-primary btn-block">
-                </form>
+          <div id="user-panel" class="panel panel-default text-center extra-padding">
+            <div id="stats-panel" class="panel panel-default">
+              <div class="panel-heading"><h3 class="panel-title">Player stats</h3>
+              </div>
+              <div class="panel-body text-left">
+                <p id="total-games" class="no-padding">Games played: 27</p>
+                <p id="games-unfinished" class="no-padding">Open games: 26</p>
               </div>
             </div>
-            <div class="panel-body">
-              <form id="sign-out">
-                <input type="submit" name="submit" value="sign out" class="btn btn-block">
-              </form>
+            <div id="#change-pass-panel" class="panel panel-default">
+              <div class="panel-heading">
+                <a data-toggle="collapse" href="#change-pass-collapse">Change password</a>
+              </div>
+              <div id="change-pass-collapse" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <form id="change-password">
+                    <fieldset class="form-group">
+                      <input type="text" name="passwords[old]" placeholder="old password" class="form-control">
+                      <input type="text" name="passwords[new]" placeholder="new password" class="form-control">
+                    </fieldset>
+                    <input type="submit" name="submit" value="update" class="btn btn-primary btn-block">
+                  </form>
+                </div>
+              </div>
             </div>
+            <form id="sign-out">
+              <input type="submit" name="submit" value="sign out" class="btn btn-block">
+            </form>
           </div>
 
-            <button id="reset-board" class="btn btn-block">New local game</button>
             <p id="sign-form-message" class="alert"></p>
 
         </div>
