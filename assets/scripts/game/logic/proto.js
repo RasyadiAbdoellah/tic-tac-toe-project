@@ -18,8 +18,10 @@ Game.prototype.switchToken = function () {
 }
 
 Game.prototype.play = function (index) {
-  this.turnCount++
+  // this.turnCount++
   // console.log(this.turnCount)
+
+  // checks if the game is not over and the space is valid
   if (!this.over && !this.collisionCheck(index)) {
     this.cells[index] = this.currentPlayer
     // win condition is assigned to a global variable
@@ -46,11 +48,11 @@ Game.prototype.clearBoard = function () {
   // this.turnCount = 0 // used for debugging
 }
 
+// Functions below are called during a winCheck.
+
 // horizontalCheck checks if all values in a row match. assumes value is NOT undefined
 Game.prototype.horizontalCheck = function (index) {
   if (this.cells[index] === this.cells[index + 1] && this.cells[index] === this.cells[index + 2]) {
-    // change current game condition
-    this.over = true
     // returns true value
     return true
   }
@@ -58,18 +60,15 @@ Game.prototype.horizontalCheck = function (index) {
 // verticalCheck checks if all values in a column match. assumes value is NOT undefined
 Game.prototype.verticalCheck = function (index) {
   if (this.cells[index] === this.cells[index + 3] && this.cells[index] === this.cells[index + 6]) {
-    // change current game condition
-    this.over = true
     // returns true value
     return true
   }
 }
 
+// stalemateCheck simply checks if all cells are not empty. The function should be called when all no win function returns true. This function is a pretty unecessary, but I'm not playing code golf.
 Game.prototype.stalemateCheck = function () {
   if (this.cells.every(isNotEmpty)) {
-    console.log('stalemate check')
-    this.over = true
-    // returns stalemate token
+    // console.log('stalemate check')
     return true
   }
 }
@@ -77,7 +76,6 @@ Game.prototype.stalemateCheck = function () {
 Game.prototype.winCheck = function () {
   // winCheck checks for vertical, horizontal, or diagonal matches
   // toggles the over property if cells is completely filled or win condition is met
-  // returns winning side
   // console.log('checking winner')
   // horizontal check
   for (let i = 0; i < this.cells.length; i += 3) {
@@ -87,6 +85,8 @@ Game.prototype.winCheck = function () {
     // console.log('isNotEmpty:', isNotEmpty(this.cells[i]))
     if (isNotEmpty(this.cells[i])) {
       if (this.horizontalCheck(i)) {
+        // change current game condition
+        this.over = true
         return true
       }
     }
@@ -99,6 +99,8 @@ Game.prototype.winCheck = function () {
     // console.log('isNotEmpty:', isNotEmpty(this.cells[i]))
     if (isNotEmpty(this.cells[i])) {
       if (this.verticalCheck(i)) {
+        // change current game condition
+        this.over = true
         return true
       }
     }
@@ -124,6 +126,8 @@ Game.prototype.winCheck = function () {
   }
   // checks for stalemate
   if (this.stalemateCheck()) {
+    // change current game condition
+    this.over = true
     return 0
   }
 }
