@@ -62,9 +62,18 @@ const onChangePassSuccess = function () {
 
 const onSignOutSuccess = function () {
   store.user = null
+<<<<<<< HEAD
   // console.log(store.user)
   $('#user-panel').toggle()
   $('#sign-in-panel').toggle()
+=======
+  store.game = null
+  // console.log(store.user)
+  $('#change-password').toggle()
+  $('#sign-out').toggle()
+  $('#sign-in').toggle()
+  $('#display-sign-up').toggle()
+>>>>>>> Bug fix on signout
 
   // display success message
   $('#sign-form-message').removeClass()
