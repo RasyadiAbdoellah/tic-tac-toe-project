@@ -62,7 +62,7 @@ const onChangePassSuccess = function () {
 
 const onSignOutSuccess = function () {
   store.user = null
-  console.log(store.user)
+  // console.log(store.user)
   $('#user-panel').toggle()
   $('#sign-in-panel').toggle()
 
@@ -71,6 +71,8 @@ const onSignOutSuccess = function () {
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').addClass('alert alert-success margin-top')
   $('#sign-form-message').text('Signed out. Goodbye!')
+
+  gameUi.resetBoardUi()
 
   // change text in new game button
   $('#reset-board').text('New local game')
