@@ -28,16 +28,7 @@ const updateState = function (board, index) {
   })
 }
 
-const getStats = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/games',
-    method: 'GET',
-    headers: { Authorization: 'Token token=' + store.user.token }
-  })
-}
-
 module.exports = {
   createGame,
-  updateState,
-  getStats
+  updateState
 }

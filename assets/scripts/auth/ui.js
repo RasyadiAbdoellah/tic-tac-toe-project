@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const api = require('./api')
 const gameUi = require('../game/ui')
 
 const onSignUpSuccess = function (data) {
@@ -9,7 +10,7 @@ const onSignUpSuccess = function (data) {
   // show form message
   $('#sign-form-message').removeClass()
   $('#sign-form-message').fadeIn(200).delay(3000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-success')
+  $('#sign-form-message').addClass('alert alert-success margin-top')
   $('#sign-form-message').text('Sign up successful! You can now sign in.')
 }
 
@@ -19,10 +20,23 @@ const onSignInSuccess = function (data) {
   // explicitely hide the form message on success
   $('#sign-form-message').hide()
 
+  api.getStats().then((data) => {
+    // console.log(data.games.length)
+    $('#total-games').text(data.games.length)
+  })
+  api.getStatsOverTrue().then((data) => {
+    store.gamesOver = data.games
+  })
+  api.getStatsOverFalse().then((data) => {
+    store.gamesOpen = data.games
+    $('#open-games').text(data.games.length)
+    // console.log(store.gamesOpen)
+  })
+
   // display success message
   // clear all classes
   $('#sign-form-message').removeClass()
-  $('#sign-form-message').addClass('alert alert-success')
+  $('#sign-form-message').addClass('alert alert-success margin-top')
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').text('Signed in. Welcome!')
   // toggle signed in user functionality
@@ -42,7 +56,7 @@ const onChangePassSuccess = function () {
   // display success message
   $('#sign-form-message').removeClass()
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-success')
+  $('#sign-form-message').addClass('alert alert-success margin-top')
   $('#sign-form-message').text('Password successfully changed.')
 }
 
@@ -55,7 +69,7 @@ const onSignOutSuccess = function () {
   // display success message
   $('#sign-form-message').removeClass()
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-success')
+  $('#sign-form-message').addClass('alert alert-success margin-top')
   $('#sign-form-message').text('Signed out. Goodbye!')
 
   // change text in new game button
@@ -66,7 +80,7 @@ const onFailure = function () {
   // display success message
   $('#sign-form-message').removeClass()
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-danger')
+  $('#sign-form-message').addClass('alert alert-danger margin-top')
   $('#sign-form-message').text('Uh-oh, something went wrong. try again!')
 }
 

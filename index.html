@@ -73,6 +73,7 @@
 
           <button id="reset-board" class="btn btn-lg margin-top">New local game</button>
         </div>
+
         <div class="col-xs-12 col-sm-4">
           <div id="sign-in-panel" class="panel panel-default">
               <div class="panel-body">
@@ -80,6 +81,7 @@
                   <li class="active"><a href="#sign-in-tab" data-toggle="tab">Sign in</a></li>
                   <li><a href="#sign-up-tab" data-toggle="tab">Register</a></li>
                 </ul>
+
                 <div class="tab-content">
                   <div id="sign-in-tab" class="tab-pane fade in active">
                     <form id="sign-in">
@@ -92,6 +94,7 @@
                       <input type="submit" name="submit" value="Sign in" class="btn btn-primary btn-block">
                     </form>
                   </div>
+
                   <div id="sign-up-tab" class="tab-pane fade">
                     <form id="sign-up">
                       <fieldset class="form-group">
@@ -104,6 +107,7 @@
                       <input type="submit" name="submit" value="Register" class="btn btn-primary btn-block">
                     </form>
                   </div>
+
               </div>
             </div>
           </div>
@@ -113,10 +117,11 @@
               <div class="panel-heading"><h3 class="panel-title">Player stats</h3>
               </div>
               <div class="panel-body text-left">
-                <p id="total-games" class="no-padding">Games played: 27</p>
-                <p id="games-unfinished" class="no-padding">Open games: 26</p>
+                <p class="no-padding">Games played: <span id="total-games"></span></p>
+                <p class="no-padding">Open games: <span id="open-games"></span></p>
               </div>
             </div>
+
             <div id="#change-pass-panel" class="panel panel-default">
               <div class="panel-heading">
                 <a data-toggle="collapse" href="#change-pass-collapse">Change password</a>
@@ -130,9 +135,11 @@
                     </fieldset>
                     <input type="submit" name="submit" value="update" class="btn btn-primary btn-block">
                   </form>
+
                 </div>
               </div>
             </div>
+
             <form id="sign-out">
               <input type="submit" name="submit" value="sign out" class="btn btn-block">
             </form>
