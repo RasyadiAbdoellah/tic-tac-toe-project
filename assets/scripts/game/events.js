@@ -47,20 +47,11 @@ const onClearBoard = function () {
   board.clearBoard()
 }
 
-const onGetStats = function () {
-  api.getStats()
-    .then(data => {
-      store.games = data.games
-      console.log(store.games)
-    })
-}
-
 const addHandler = function (event) {
   // $('#game-alert').hide()
 
   $('.cell').on('click', onCellClick)
   $('#reset-board').on('click', onClearBoard)
-  $('#get-stats').on('click', onGetStats)
 }
 
 module.exports = {
