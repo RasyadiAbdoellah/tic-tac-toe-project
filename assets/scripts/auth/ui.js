@@ -49,7 +49,8 @@ const onChangePassSuccess = function () {
 
 const onSignOutSuccess = function () {
   store.user = null
-  console.log(store.user)
+  store.game = null
+  // console.log(store.user)
   $('#change-password').toggle()
   $('#sign-out').toggle()
   $('#sign-in').toggle()
