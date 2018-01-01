@@ -8,14 +8,14 @@ const store = require('../store')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('sign up triggered')
+  // console.log('sign up triggered')
   const data = getFormFields(event.target)
   api.signUp(data).then(ui.onSignUpSuccess).catch(ui.onFailure)
 }
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('sign in triggered')
+  // console.log('sign in triggered')
   const data = getFormFields(event.target)
   api.signIn(data).then(ui.onSignInSuccess)
     .then(() => {
@@ -28,20 +28,20 @@ const onSignIn = function (event) {
 
 const onChangePass = function (event) {
   event.preventDefault()
-  console.log('change pw triggered')
+  // console.log('change pw triggered')
   const data = getFormFields(event.target)
   api.changePass(data).then(ui.onChangePassSuccess).catch(ui.onFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('sign out triggered')
+  // console.log('sign out triggered')
   api.signOut().then(ui.onSignOutSuccess).catch(ui.onFailure)
 }
 
 const addHandler = function (event) {
   // hide elements on page load
-  //  $('#user-panel').hide() // comment out to show panel without signing in
+  $('#user-panel').hide() // comment out to show panel without signing in
 
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
