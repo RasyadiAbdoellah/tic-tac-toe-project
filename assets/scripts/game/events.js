@@ -35,7 +35,7 @@ const onCellClick = function (event) {
 }
 
 const onClearBoard = function () {
-  if (store.user !== undefined) {
+  if (store.user) {
     api.createGame().then(data => {
       store.game = data.game
     }).then(ui.resetBoardUi)
