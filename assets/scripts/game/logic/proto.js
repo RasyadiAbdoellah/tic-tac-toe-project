@@ -10,6 +10,12 @@ const Game = function () {
   this.win = false
   // this.turnCount = 0 // used for debugging
 }
+Game.prototype.switchToken = function () {
+  // this.currentPlayer is switched only if win is false
+  if (this.win !== true) {
+    this.currentPlayer === 'x' ? this.currentPlayer = 'o' : this.currentPlayer = 'x'
+  }
+}
 
 Game.prototype.play = function (index) {
   this.turnCount++
@@ -18,10 +24,7 @@ Game.prototype.play = function (index) {
     this.cells[index] = this.currentPlayer
     // win condition is assigned to a global variable
     this.win = this.winCheck()
-    // this.currentPlayer is switched only if win is false
-    if (this.win !== true) {
-      this.currentPlayer === 'x' ? this.currentPlayer = 'o' : this.currentPlayer = 'x'
-    }
+
     // console.log(this.win)
   }
   if (this.win === true || this.over === true) {
@@ -33,7 +36,8 @@ Game.prototype.play = function (index) {
     }
   }
 }
-// this reset function
+
+// reset function
 Game.prototype.clearBoard = function () {
   this.cells = ['', '', '', '', '', '', '', '', '']
   this.over = false
@@ -41,6 +45,7 @@ Game.prototype.clearBoard = function () {
   this.win = false
   // this.turnCount = 0 // used for debugging
 }
+
 // horizontalCheck checks if all values in a row match. assumes value is NOT undefined
 Game.prototype.horizontalCheck = function (index) {
   if (this.cells[index] === this.cells[index + 1] && this.cells[index] === this.cells[index + 2]) {

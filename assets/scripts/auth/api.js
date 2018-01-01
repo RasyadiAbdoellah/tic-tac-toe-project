@@ -35,9 +35,36 @@ const signOut = function () {
   })
 }
 
+const getStats = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'GET',
+    headers: { Authorization: 'Token token=' + store.user.token }
+  })
+}
+
+const getStatsOverTrue = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    method: 'GET',
+    headers: { Authorization: 'Token token=' + store.user.token }
+  })
+}
+
+const getStatsOverFalse = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=false',
+    method: 'GET',
+    headers: { Authorization: 'Token token=' + store.user.token }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePass,
-  signOut
+  signOut,
+  getStats,
+  getStatsOverTrue,
+  getStatsOverFalse
 }

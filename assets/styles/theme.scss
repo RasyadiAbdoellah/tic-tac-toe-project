@@ -1,19 +1,32 @@
+@import './colors';
+
+body {
+  background: $background-color;
+}
+
+form {
+  margin-top: 5%;
+}
 
 .container {
   max-width: 980px;
 }
 
-.cell {
-  border: 3px solid #000;
-  box-sizing: border-box;
-  padding-bottom: 30%; // = width for a 1:1 aspect ratio
+.game-message {
+  font-size: 1.6em;
+  margin: 5% 0;
+  min-height: 100%;
 }
 
-.cell-content {
-  height: 90%; // = 100% - 2*5% padding
-  padding: 40% 0;
-  position: absolute;
-  text-align: center;
-  width: 90%; // = 100% - 2*5% padding
-
+.no-padding {
+  padding: 0;
+}
+.extra-padding {
+  padding: 5%;
+}
+.margin-top {
+  margin-top: 5%;
+}
+.board {
+  margin-bottom: 10%;
 }
