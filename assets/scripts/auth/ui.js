@@ -28,8 +28,10 @@ const onSignInSuccess = function (data) {
   api.getStatsOverTrue().then((data) => {
     store.gamesOver = data.games
     let timesWon = 0
+    let timesTied = 0
+    let timesLost = 0
     store.gamesOver.forEach((element) => {
-      // temp Game object
+      // temp Game object to calculate win/lose/tie stats
       const game = new Game()
       game.cells = element.cells
       const winningToken = game.winningToken()
@@ -37,9 +39,15 @@ const onSignInSuccess = function (data) {
         timesWon++
       } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
         timesWon++
+      } else if (winningToken === '0') {
+        timesTied++
+      } else {
+        timesLost++
       }
     })
     $('#games-won').text(timesWon)
+    $('#games-lost').text(timesLost)
+    $('#games-tied').text(timesTied)
   })
   api.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games
@@ -54,8 +62,8 @@ const onSignInSuccess = function (data) {
   $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
   $('#sign-form-message').text('Signed in. Welcome!')
   // toggle signed in user functionality
-  $('#user-panel').toggle()
-  $('#sign-in-panel').toggle()
+  $('#user-panel').show()
+  $('#sign-in-panel').hide()
 
   // reset the board
   gameUi.resetBoardUi()
@@ -79,8 +87,8 @@ const onSignOutSuccess = function () {
   store.game = null
   store.games = null
   // console.log(store.user)
-  $('#user-panel').toggle()
-  $('#sign-in-panel').toggle()
+  $('#user-panel').hide()
+  $('#sign-in-panel').show()
 
   // display success message
   $('#sign-form-message').removeClass()
