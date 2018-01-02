@@ -5,7 +5,13 @@ const gameUi = require('../game/ui')
 const Game = require('../game/logic/proto')
 
 // ------------------- SPECIAL UI/API FUNCTION FOR STATS ----------------------
-/* The functions below are ui functions with api calls. The api calls are only done to show user win/lose/tie stats. There are a total of three (3) api calls, one that gets all games played, one that gets only games that are over, and one that gets only games that are NOT over. games that are over are stored in store.gamesOver, and win/lose/tie calculations are done based on the local stored array. Games that are not over are also stored locally under store.gamesOpen. User will have option to load last game played and continue. */
+/* The functions below are ui functions with api calls. The api calls are only done to show user win/lose/tie stats. There are a total of three (3) api calls, one that gets all games played, one that gets only games that are over, and one that gets only games that are NOT over. games that are over are stored in store.gamesOver, and win/lose/tie calculations are done based on the local stored array. Games that are not over are also stored locally under store.gamesOpen. User will have option to load last game played and continue.
+
+The reason for having the stats api calls here is that:
+1) Only signed in players can see their stats.
+2) I want the stats to show the moment a user signs in, without them having to press refresh.
+3) User stats need an auth header.
+*/
 
 // Game win/lose/tie stats callback function
 const calculateStats = (data) => {
