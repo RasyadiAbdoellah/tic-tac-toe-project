@@ -113,14 +113,22 @@
           </div>
 
           <div id="user-panel" class="panel panel-default text-center extra-padding">
-            <div id="stats-panel" class="panel panel-default">
-              <div class="panel-heading"><h3 class="panel-title">Player stats</h3>
+            <div id="stats-panel" class="panel panel-default text-left">
+              <div class="panel-heading text-center">Player stats
+                <button id="refresh-player-stats" type="button" class="btn btn-default btn-xs pull-right">Refresh
+                </button>
               </div>
-              <div class="panel-body text-left">
-                <p class="no-padding">Games played: <span id="total-games"></span></p>
-                <p class="no-padding">Games won: <span id="games-won"></span></p>
-                <p class="no-padding">Open games: <span id="open-games"></span></p>
-              </div>
+              <table class="table">
+                <tr>
+                  <td class="no-padding">Games played</td> <td id="total-games"></td>
+                </tr>
+                <tr>
+                  <td class="no-padding">Games won</td><td id="games-won"></td>
+                </tr>
+                <tr>
+                  <td class="no-padding">Open games</td><td id="open-games"></td>
+                </tr>
+              </table>
             </div>
 
             <div id="#change-pass-panel" class="panel panel-default">

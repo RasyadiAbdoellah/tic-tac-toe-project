@@ -47,6 +47,7 @@ const addHandler = function (event) {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePass)
   $('#sign-out').on('submit', onSignOut)
+  $('#refresh-player-stats').on('click', ui.refreshStats)
 }
 
 module.exports = {
