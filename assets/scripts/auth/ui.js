@@ -1,7 +1,7 @@
 'use strict'
 const store = require('../store')
 const api = require('./api')
-const gameUi = require('../game/ui')
+const boardEvents = require('../game/events')
 const Game = require('../game/logic/proto')
 
 // ------------------- SPECIAL UI/API FUNCTION FOR STATS ----------------------
@@ -86,7 +86,7 @@ const onSignInSuccess = function (data) {
   $('#sign-in-panel').hide()
 
   // reset the board
-  gameUi.resetBoardUi()
+  boardEvents.onClearBoard()
 
   // change text in new game button
   $('#reset-board').text('New online game')
@@ -116,7 +116,8 @@ const onSignOutSuccess = function () {
   $('#sign-form-message').addClass('alert alert-success margin-top')
   $('#sign-form-message').text('Signed out. Goodbye!')
 
-  gameUi.resetBoardUi()
+  // clear board
+  boardEvents.onClearBoard()
 
   // change text in new game button
   $('#reset-board').text('New local game')
