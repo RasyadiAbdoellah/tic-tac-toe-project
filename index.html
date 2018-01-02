@@ -19,7 +19,7 @@
       </header>
 
       <main class="container">
-        <div class="col-xs-12 col-sm-8 text-center board">
+        <div id="board" class="col-xs-12 col-sm-8 text-center">
 
           <p id="game-alert" class="game-message text-info">New local game! Sign in to save progress. X Player's turn.</p>
 
@@ -136,8 +136,9 @@
                 </tr>
               </table>
             </div>
+            <button id="resume-last-game" class="btn btn-default btn-block">Resume last game</button>
 
-            <div id="#change-pass-panel" class="panel panel-default">
+            <div id="change-pass-panel" class="panel panel-default margin-top">
               <div class="panel-heading">
                 <a data-toggle="collapse" href="#change-pass-collapse">Change password</a>
               </div>
@@ -148,7 +149,7 @@
                       <input type="password" name="passwords[old]" placeholder="old password" class="form-control">
                       <input type="password" name="passwords[new]" placeholder="new password" class="form-control">
                     </fieldset>
-                    <input type="submit" name="submit" value="update" class="btn btn-primary btn-block">
+                    <input type="submit" name="submit" value="update" class="btn btn-info btn-block">
                   </form>
 
                 </div>
@@ -156,7 +157,7 @@
             </div>
 
             <form id="sign-out">
-              <input type="submit" name="submit" value="sign out" class="btn btn-block">
+              <input type="submit" name="submit" value="sign out" class="btn btn-default btn-block">
             </form>
           </div>
 

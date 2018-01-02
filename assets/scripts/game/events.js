@@ -47,11 +47,37 @@ const onClearBoard = function () {
   board.clearBoard()
 }
 
+const onResumeGame = function () {
+  /* Function to resume last game. takes last game in store.gamesOpen and saves it to current game in store.game. Then assigns cells in board to match cells in store.game. Function then counts the number of x's and o's in the board cells and assigns the right currentPlayer. Finally, function prints cell values to grid. */
+
+  store.game = store.gamesOpen[store.gamesOpen.length - 1]
+  board.cells = store.game.cells
+  let xCount = 0
+  let oCount = 0
+  for (let i = 0; i < board.cells.length; i++) {
+    if (board.cells[i] === 'x') {
+      xCount++
+    } else if (board.cell[i] === 'o') {
+      oCount++
+    }
+  }
+  if (xCount > oCount) {
+    board.currentPlayer = 'o'
+  } else if (oCount >= xCount) {
+    board.currentPlayer = 'x'
+  }
+
+  for (let i = 0; i < board.cells.length; i++) {
+    $('.cell [data-value="' + i + '"]').text(board.cells[i])
+  }
+}
+
 const addHandler = function (event) {
   // $('#game-alert').hide()
 
   $('.cell').on('click', onCellClick)
   $('#reset-board').on('click', onClearBoard)
+  $('#resume-last-game').on('click', onResumeGame)
 }
 
 module.exports = {
