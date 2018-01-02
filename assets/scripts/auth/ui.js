@@ -36,12 +36,16 @@ const onSignInSuccess = function (data) {
       game.cells = element.cells
       const winningToken = game.winningToken()
       if (winningToken === 'x' && element.player_x.id === store.user.id) {
+        debugger
         timesWon++
       } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
+        debugger
         timesWon++
       } else if (winningToken === '0') {
+        debugger
         timesTied++
       } else {
+        debugger
         timesLost++
       }
     })
@@ -118,18 +122,30 @@ const refreshStats = function () {
   api.getStatsOverTrue().then((data) => {
     store.gamesOver = data.games
     let timesWon = 0
+    let timesTied = 0
+    let timesLost = 0
     store.gamesOver.forEach((element) => {
-      // temp Game object
+      // temp Game object to calculate win/lose/tie stats
       const game = new Game()
       game.cells = element.cells
       const winningToken = game.winningToken()
       if (winningToken === 'x' && element.player_x.id === store.user.id) {
+        debugger
         timesWon++
       } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
+        debugger
         timesWon++
+      } else if (winningToken === '0') {
+        debugger
+        timesTied++
+      } else {
+        debugger
+        timesLost++
       }
     })
     $('#games-won').text(timesWon)
+    $('#games-lost').text(timesLost)
+    $('#games-tied').text(timesTied)
   })
   api.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games

@@ -176,7 +176,7 @@ Game.prototype.winningToken = function () {
   if (isNotEmpty(this.cells[2]) && (this.cells[2] === this.cells[4] && this.cells[2] === this.cells[6])) {
     // console.log('diag 2 check')
     // console.log('current value: ', this.cells[2])
-    return this.cells[0]
+    return this.cells[2]
   }
   // checks for stalemate
   if (this.stalemateCheck()) {
