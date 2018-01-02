@@ -24,10 +24,12 @@ const calculateStats = (data) => {
     const game = new Game()
     game.cells = element.cells
     const winningToken = game.winningToken()
-    if (winningToken === 'x' && element.player_x.id === store.user.id) {
+    if (winningToken === 'x' && store.user.id === element.player_x.id) {
       timesWon++
-    } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
-      timesWon++
+    } else if (winningToken === 'o' && element.player_o) {
+      if (element.player_o.id === store.user.id) {
+        timesWon++
+      }
     } else if (winningToken === 0) {
       timesTied++
     } else {
@@ -44,12 +46,12 @@ const refreshStats = function () {
     // console.log(data.games.length)
     $('#total-games').text(data.games.length)
   })
-  api.getStatsOverTrue().then(calculateStats)
   api.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games
     $('#open-games').text(data.games.length)
-    // console.log(store.gamesOpen)
+  // console.log(store.gamesOpen)
   })
+  api.getStatsOverTrue().then(calculateStats)
 }
 
 // -------------------UI FUNCTIONS BELOW -------------------------
