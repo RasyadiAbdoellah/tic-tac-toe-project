@@ -2,6 +2,7 @@
 const store = require('../store')
 const api = require('./api')
 const gameUi = require('../game/ui')
+const Game = require('../game/logic/proto')
 
 const onSignUpSuccess = function (data) {
   console.log(data)
@@ -26,6 +27,21 @@ const onSignInSuccess = function (data) {
   })
   api.getStatsOverTrue().then((data) => {
     store.gamesOver = data.games
+    let timesWon = 0
+    store.gamesOver.forEach((element) => {
+      // temp Game object
+      const game = new Game()
+      game.cells = element.cells
+      const winningToken = game.winningToken()
+      if (winningToken === 'x' && element.player_x.id === store.user.id) {
+        timesWon++
+        debugger
+      } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
+        timesWon++
+        debugger
+      }
+    })
+    $('#games-won').text(timesWon)
   })
   api.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games

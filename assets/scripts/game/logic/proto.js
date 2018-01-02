@@ -137,4 +137,52 @@ Game.prototype.collisionCheck = function (index) {
   return this.cells[index] !== ''
 }
 
+Game.prototype.winningToken = function () {
+  // winningToken is almost identical with winCheck, but returns the token that won instead of a bool value
+  // console.log('checking winning token')
+  // horizontal check
+  for (let i = 0; i < this.cells.length; i += 3) {
+    // console.log('horizontal check')
+    // console.log('current value: ', this.cells[i])
+    // checks for undefined
+    // console.log('isNotEmpty:', isNotEmpty(this.cells[i]))
+    if (isNotEmpty(this.cells[i])) {
+      if (this.horizontalCheck(i)) {
+        // change current game condition
+        return this.cells[i]
+      }
+    }
+  }
+  // vertical check
+  for (let i = 0; i < 3; i++) {
+    // console.log('vertical check')
+    // console.log('current value: ', this.cells[i])
+    // // checks for undefined
+    // console.log('isNotEmpty:', isNotEmpty(this.cells[i]))
+    if (isNotEmpty(this.cells[i])) {
+      if (this.verticalCheck(i)) {
+        // change current game condition
+        return this.cells[i]
+      }
+    }
+  }
+  // diagonal from top left to bottom right check
+  if (isNotEmpty(this.cells[0]) && (this.cells[0] === this.cells[4] && this.cells[0] === this.cells[8])) {
+    // console.log('diag 1 check')
+    // console.log('current value: ', this.cells[0])
+    return this.cells[0]
+  }
+  // diagonal from top right to bottom left check
+  if (isNotEmpty(this.cells[2]) && (this.cells[2] === this.cells[4] && this.cells[2] === this.cells[6])) {
+    // console.log('diag 2 check')
+    // console.log('current value: ', this.cells[2])
+    return this.cells[0]
+  }
+  // checks for stalemate
+  if (this.stalemateCheck()) {
+    // change current game condition
+    return 0
+  }
+}
+
 module.exports = Game
