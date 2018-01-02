@@ -28,7 +28,7 @@ const calculateStats = (data) => {
       timesWon++
     } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
       timesWon++
-    } else if (winningToken === '0') {
+    } else if (winningToken === 0) {
       timesTied++
     } else {
       timesLost++
