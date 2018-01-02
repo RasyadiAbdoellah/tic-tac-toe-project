@@ -35,10 +35,8 @@ const onSignInSuccess = function (data) {
       const winningToken = game.winningToken()
       if (winningToken === 'x' && element.player_x.id === store.user.id) {
         timesWon++
-        debugger
       } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
         timesWon++
-        debugger
       }
     })
     $('#games-won').text(timesWon)
@@ -103,7 +101,6 @@ const onFailure = function () {
   $('#sign-form-message').addClass('alert alert-danger margin-top')
   $('#sign-form-message').text('Uh-oh, something went wrong. try again!')
 }
-
 module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
