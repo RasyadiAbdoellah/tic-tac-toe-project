@@ -1,5 +1,16 @@
-TIC TAC TOE
+# TIC TAC TOE
 
-# About
+## About
 
+Tic-tac-toe is simple, relatively easy to make game.
 
+## Tech Used
+
+- HTML5
+- SCSS
+- JavaScript
+- jQuery
+- Ajax
+- Bootstrap
+
+## Planning & Wireframes
