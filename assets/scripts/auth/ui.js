@@ -109,10 +109,40 @@ const onFailure = function () {
   $('#sign-form-message').addClass('alert alert-danger margin-top')
   $('#sign-form-message').text('Uh-oh, something went wrong. try again!')
 }
+
+const refreshStats = function () {
+  api.getStats().then((data) => {
+    // console.log(data.games.length)
+    $('#total-games').text(data.games.length)
+  })
+  api.getStatsOverTrue().then((data) => {
+    store.gamesOver = data.games
+    let timesWon = 0
+    store.gamesOver.forEach((element) => {
+      // temp Game object
+      const game = new Game()
+      game.cells = element.cells
+      const winningToken = game.winningToken()
+      if (winningToken === 'x' && element.player_x.id === store.user.id) {
+        timesWon++
+      } else if (winningToken === 'o' && element.player_o.id === store.user.id) {
+        timesWon++
+      }
+    })
+    $('#games-won').text(timesWon)
+  })
+  api.getStatsOverFalse().then((data) => {
+    store.gamesOpen = data.games
+    $('#open-games').text(data.games.length)
+    // console.log(store.gamesOpen)
+  })
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
   onChangePassSuccess,
   onSignOutSuccess,
-  onFailure
+  onFailure,
+  refreshStats
 }
