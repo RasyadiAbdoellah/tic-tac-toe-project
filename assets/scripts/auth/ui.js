@@ -7,7 +7,7 @@ const boardUi = require('../game/ui')
 // Functions below are mostly for UI, with only onSignInSuccess having an api call to get stats.
 
 const onSignUpSuccess = function (data) {
-  console.log(data)
+  // console.log(data)
   // explicitly hide and show the elements we want
 
   // show form message
@@ -44,7 +44,7 @@ const onSignInSuccess = function (data) {
 }
 
 const onChangePassSuccess = function () {
-  console.log('pw changed')
+  // console.log('pw changed')
 
   // display success message
   $('#sign-form-message').removeClass()

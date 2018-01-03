@@ -30,11 +30,11 @@ Game.prototype.play = function (index) {
     // console.log(this.win)
   }
   if (this.win === true || this.over === true) {
-    console.log('game is over!')
+    // console.log('game is over!')
     if (this.win !== 0) {
-      console.log(this.currentPlayer + ' is the winner!')
+    //  console.log(this.currentPlayer + ' is the winner!')
     } else {
-      console.log('Stalemate!')
+    //  console.log('Stalemate!')
     }
   }
 }
