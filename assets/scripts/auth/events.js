@@ -105,5 +105,6 @@ const addHandler = function (event) {
 }
 
 module.exports = {
-  addHandler
+  addHandler,
+  refreshStats
 }
