@@ -28,7 +28,7 @@ const resetBoardUi = function () {
 
 const resumeLastGame = function (board) {
   for (let i = 0; i < board.cells.length; i++) {
-    $('.cell[data-value="' + i + '"]').children().text(board.cells[i])
+    $('.cell[data-value="' + i + '"]').children().text(board.cells[i].toUpperCase())
   }
   $('#game-alert').removeClass().addClass('game-message text-info').text('Game resumed! It\'s ' + board.currentPlayer.toUpperCase() + ' Player\'s turn.')
 }

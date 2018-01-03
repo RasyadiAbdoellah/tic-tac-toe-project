@@ -39,6 +39,8 @@ const onCellClick = function (event) {
 }
 
 const onClearBoard = function () {
+  // refresh stats to reflect new game
+  userEvents.refreshStats()
   if (store.user) {
     api.createGame().then(data => {
       store.game = data.game
@@ -60,24 +62,31 @@ const onResumeGame = function () {
   // refreshes the stored open games array just to be safe
   userApi.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games
-    store.game = store.gamesOpen[store.gamesOpen.length - 1]
-    board.cells = store.game.cells
-    board.over = store.game.over
-    let xCount = 0
-    let oCount = 0
-    for (let i = 0; i < board.cells.length; i++) {
-      if (board.cells[i] === 'x') {
-        xCount++
-      } else if (board.cells[i] === 'o') {
-        oCount++
+    // check if there are any games where over = false
+    if (store.gamesOpen.length !== 0) {
+      store.game = store.gamesOpen[store.gamesOpen.length - 1]
+      board.cells = store.game.cells
+      board.over = store.game.over
+      let xCount = 0
+      let oCount = 0
+      for (let i = 0; i < board.cells.length; i++) {
+        if (board.cells[i] === 'x') {
+          xCount++
+        } else if (board.cells[i] === 'o') {
+          oCount++
+        }
       }
+      if (xCount > oCount) {
+        board.currentPlayer = 'o'
+      } else if (oCount >= xCount) {
+        board.currentPlayer = 'x'
+      }
+      ui.resumeLastGame(board)
+    } else {
+      $('#user-message').removeClass()
+      $('#user-message').addClass('alert alert-warning margin-top').text('No open games to resume!')
+      $('#user-message').fadeIn(200).delay(3000).fadeOut(200)
     }
-    if (xCount > oCount) {
-      board.currentPlayer = 'o'
-    } else if (oCount >= xCount) {
-      board.currentPlayer = 'x'
-    }
-    ui.resumeLastGame(board)
   })
 }
 

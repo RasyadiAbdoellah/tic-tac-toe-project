@@ -11,24 +11,22 @@ const onSignUpSuccess = function (data) {
   // explicitly hide and show the elements we want
 
   // show form message
-  $('#sign-form-message').removeClass()
-  $('#sign-form-message').fadeIn(200).delay(3000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-success margin-top')
-  $('#sign-form-message').text('Sign up successful! You can now sign in.')
+  $('#user-message').removeClass().addClass('alert alert-success margin-top')
+  $('#user-message').fadeIn(200).delay(3000).fadeOut(200)
+  $('#user-message').text('Sign up successful! You can now sign in.')
 }
 
 const onSignInSuccess = function (data) {
   store.user = data.user
   // console.log(store.user)
   // explicitely hide the form message on success
-  $('#sign-form-message').hide()
+  $('#user-message').hide()
 
   // display success message
   // clear all classes
-  $('#sign-form-message').removeClass()
-  $('#sign-form-message').addClass('alert alert-success margin-top')
-  $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#sign-form-message').text('Signed in. Welcome!')
+  $('#user-message').removeClass().addClass('alert alert-success margin-top')
+  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
+  $('#user-message').text('Signed in. Welcome!')
   // toggle signed in user functionality
   $('#user-panel').show()
   $('#sign-in-panel').hide()
@@ -47,10 +45,9 @@ const onChangePassSuccess = function () {
   console.log('pw changed')
 
   // display success message
-  $('#sign-form-message').removeClass()
-  $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-success margin-top')
-  $('#sign-form-message').text('Password successfully changed.')
+  $('#user-message').removeClass().addClass('alert alert-success margin-top')
+  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
+  $('#user-message').text('Password successfully changed.')
 }
 
 const onSignOutSuccess = function () {
@@ -62,10 +59,9 @@ const onSignOutSuccess = function () {
   $('#sign-in-panel').show()
 
   // display success message
-  $('#sign-form-message').removeClass()
-  $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-success margin-top')
-  $('#sign-form-message').text('Signed out. Goodbye!')
+  $('#user-message').removeClass().addClass('alert alert-success margin-top')
+  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
+  $('#user-message').text('Signed out. Goodbye!')
 
   // clear board
   board.clearBoard()
@@ -79,10 +75,9 @@ const onSignOutSuccess = function () {
 
 const onFailure = function () {
   // display success message
-  $('#sign-form-message').removeClass()
-  $('#sign-form-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#sign-form-message').addClass('alert alert-danger margin-top')
-  $('#sign-form-message').text('Uh-oh, something went wrong. try again!')
+  $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
+  $('#user-message').text('Uh-oh, something went wrong. try again!')
 }
 
 module.exports = {
