@@ -31,10 +31,11 @@ Below is a list of possible use cases for the web app.
 
 ### Action Plan
 My rough action plan for tackling the project is as follows
-- first phase: board object, game logic
+- first phase: model game object, create game logic
 - second phase: back-end connections
 - third phase: user interface and interacting with the board
 - fourth phase: UI polish, testing, rolling deployment
 
 ## Dev log
-#### Game Logic & Board Object
+#### Game Logic & Object
+The first step was to model a game object that worked according to spec. The game object was modeled to be as close as possible to the object the API expects and returns. I first built the app around a local game object, but never modified the code to use the game object from the API in order to retain offline play capabilities. For game behaviour I chose to attach prototype functions to the game object, mostly as a challenge to see if I could do it that way, but also since I felt that would be the most efficient.
