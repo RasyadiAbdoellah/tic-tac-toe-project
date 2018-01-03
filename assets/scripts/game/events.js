@@ -4,8 +4,9 @@ const ui = require('./ui')
 const store = require('../store')
 const api = require('./api')
 
-// need the auth api and ui for the resume game function
+// need the auth api for the resume game function
 const userApi = require('../auth/api')
+const userEvents = require('../auth/events')
 
 const board = require('./board')
 
@@ -52,6 +53,11 @@ const onClearBoard = function () {
 
 const onResumeGame = function () {
   /* Function to resume last game. runs a GET games?over=false request. Then takes last game in store.gamesOpen and saves it to current game in store.game. Then assigns cells in board to match cells in store.game. Function then counts the number of x's and o's in the board cells and assigns the right currentPlayer. Finally, function prints cell values to grid. */
+
+  // refreshes stats displayed in user panel first
+  userEvents.refreshStats()
+
+  // refreshes the stored open games array just to be safe
   userApi.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games
     store.game = store.gamesOpen[store.gamesOpen.length - 1]
