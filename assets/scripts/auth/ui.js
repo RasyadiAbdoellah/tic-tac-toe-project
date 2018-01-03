@@ -69,6 +69,7 @@ const onSignOutSuccess = function () {
 
   // clear board
   board.clearBoard()
+  boardUi.resetBoardUi()
 
   // change text in new game button
   $('#reset-board').text('New local game')
