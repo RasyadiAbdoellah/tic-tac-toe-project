@@ -37,5 +37,13 @@ My rough action plan for tackling the project is as follows
 - fourth phase: UI polish, testing, rolling deployment
 
 ## Dev log
-#### Game Logic & Object
-The first step was to model a game object that worked according to spec. The game object was modeled to be as close as possible to the object the API expects and returns. I first built the app around a local game object, but never modified the code to use the game object from the API in order to retain offline play capabilities. For game behaviour I chose to attach prototype functions to the game object, mostly as a challenge to see if I could do it that way, but also since I felt that would be the most efficient.
+### Game Logic & Object
+The first step was to model a local game object that worked according to spec. The local game object was modeled to be as close as possible to the object the API expects and returns. Originally, my plan was to build the functionality around a local game object then replace with the object returned by the API calls, but I chose to keep the local game object and seperate it from the API in order to retain offline play capabilities.
+
+For game behaviour I chose to attach prototype functions to the game object, mostly as a challenge to see if I could do it that way, but also since I felt that would be the most efficient. The prototype functions mostly evaluate a set of conditions and return a boolean value, except for one or two functions that use these conditional functions. For example, every click on the game board will run the play function which takes a number betweeen 0-8, and using that as the index, will place the current player token (a property in the game object) to the current index if there is no value there. After that it calls the win check function, which looks at all values in the cell array and compares them to winning conditions.
+
+
+
+### Back-end Connections
+
+I kept the back-end Ajax calls seperate from the rest of the JavaScript code in their own file; one for user authorization, and one for game API. 
