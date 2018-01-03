@@ -1,14 +1,8 @@
 const Game = require('./logic/proto')
 
-const Board = function () {
-  this.game = new Game()
-}
+const board = new Game()
 
-Board.prototype.playMove = function (index) {
-
-}
-
-module.exports = Board
+module.exports = board
 // CODE BELOW WAS USED FOR TESTING
 // // x always goes first. will be switched to o when board.play is called
 // // test case 1

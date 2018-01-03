@@ -23,7 +23,8 @@ const onSignIn = function (event) {
         .then(data => {
           store.game = data.game
         })
-    }).catch(ui.onFailure)
+    }).then(ui.refreshStats)
+    .catch(ui.onFailure)
 }
 
 const onChangePass = function (event) {

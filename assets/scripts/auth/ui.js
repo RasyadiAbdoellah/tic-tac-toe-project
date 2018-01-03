@@ -1,7 +1,8 @@
 'use strict'
 const store = require('../store')
 const api = require('./api')
-const boardEvents = require('../game/events')
+const board = require('../game/board')
+const boardUi = require('../game/ui')
 const Game = require('../game/logic/proto')
 
 // ------------------- SPECIAL UI/API FUNCTION FOR STATS ----------------------
@@ -41,16 +42,18 @@ const calculateStats = (data) => {
   $('#games-tied').text(timesTied)
 }
 
+const saveGetStatsOverFalse = function (data) {
+  store.gamesOpen = data.games
+  $('#open-games').text(data.games.length)
+}
+
 const refreshStats = function () {
   api.getStats().then((data) => {
     // console.log(data.games.length)
     $('#total-games').text(data.games.length)
   })
-  api.getStatsOverFalse().then((data) => {
-    store.gamesOpen = data.games
-    $('#open-games').text(data.games.length)
+  api.getStatsOverFalse().then(saveGetStatsOverFalse)
   // console.log(store.gamesOpen)
-  })
   api.getStatsOverTrue().then(calculateStats)
 }
 
@@ -74,7 +77,6 @@ const onSignInSuccess = function (data) {
   // explicitely hide the form message on success
   $('#sign-form-message').hide()
 
-  refreshStats()
   // display success message
   // clear all classes
   $('#sign-form-message').removeClass()
@@ -85,11 +87,14 @@ const onSignInSuccess = function (data) {
   $('#user-panel').show()
   $('#sign-in-panel').hide()
 
-  // reset the board
-  boardEvents.onClearBoard()
+  // reset the board and its ui
+  board.clearBoard()
+  boardUi.resetBoardUi()
 
   // change text in new game button
   $('#reset-board').text('New online game')
+  // change text in game alerts
+  $('#game-alert').removeClass().addClass('game-message text-info').text('New game! Saving progress to account. X Player\'s turn.')
 }
 
 const onChangePassSuccess = function () {
@@ -117,10 +122,12 @@ const onSignOutSuccess = function () {
   $('#sign-form-message').text('Signed out. Goodbye!')
 
   // clear board
-  boardEvents.onClearBoard()
+  board.clearBoard()
 
   // change text in new game button
   $('#reset-board').text('New local game')
+  // change text in game alerts
+  $('#game-alert').removeClass().addClass('game-message text-info').text('New local game! Sign in to save progress. X Player\'s turn.')
 }
 
 const onFailure = function () {
