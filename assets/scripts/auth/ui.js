@@ -8,7 +8,8 @@ const boardUi = require('../game/ui')
 
 const onSignUpSuccess = function (data) {
   // console.log(data)
-  // explicitly hide and show the elements we want
+  // clear input
+  $('#sign-up input').val('')
 
   // show form message
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
@@ -21,6 +22,9 @@ const onSignInSuccess = function (data) {
   // console.log(store.user)
   // explicitely hide the form message on success
   $('#user-message').hide()
+
+  // clear input
+  $('#sign-in input').val('')
 
   // display success message
   // clear all classes
@@ -43,6 +47,8 @@ const onSignInSuccess = function (data) {
 
 const onChangePassSuccess = function () {
   // console.log('pw changed')
+  // clear input
+  $('#change-password input').val('')
 
   // display success message
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
