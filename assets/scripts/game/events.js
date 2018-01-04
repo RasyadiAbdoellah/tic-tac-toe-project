@@ -85,7 +85,7 @@ const onResumeGame = function () {
     } else {
       $('#user-message').removeClass()
       $('#user-message').addClass('alert alert-warning margin-top').text('No open games to resume!')
-      $('#user-message').fadeIn(200).delay(3000).fadeOut(200)
+      $('#user-message').slideDown(200).delay(2500).slideUp(200)
     }
   })
 }
