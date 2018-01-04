@@ -23,9 +23,9 @@ const calculateStats = (data) => {
   let timesWon = 0
   let timesTied = 0
   let timesLost = 0
+  // temp Game object to calculate win/lose/tie stats
+  const game = new Game()
   store.gamesOver.forEach((element) => {
-    // temp Game object to calculate win/lose/tie stats
-    const game = new Game()
     game.cells = element.cells
     const winningToken = game.winningToken()
     if (winningToken === 'x' && store.user.id === element.player_x.id) {
