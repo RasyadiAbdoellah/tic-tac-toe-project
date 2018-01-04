@@ -12,7 +12,7 @@ const onSignUpSuccess = function (data) {
 
   // show form message
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
-  $('#user-message').fadeIn(200).delay(3000).fadeOut(200)
+  $('#user-message').slideDown(200).delay(3500).slideUp(200)
   $('#user-message').text('Sign up successful! You can now sign in.')
 }
 
@@ -25,7 +25,7 @@ const onSignInSuccess = function (data) {
   // display success message
   // clear all classes
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
-  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
+  $('#user-message').slideDown(200).delay(2500).slideUp(200)
   $('#user-message').text('Signed in. Welcome!')
   // toggle signed in user functionality
   $('#user-panel').show()
@@ -46,7 +46,7 @@ const onChangePassSuccess = function () {
 
   // display success message
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
-  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
+  $('#user-message').slideDown(200).delay(2500).slideUp(200)
   $('#user-message').text('Password successfully changed.')
 }
 
@@ -60,7 +60,7 @@ const onSignOutSuccess = function () {
 
   // display success message
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
-  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
+  $('#user-message').slideDown(200).delay(2500).slideUp(200)
   $('#user-message').text('Signed out. Goodbye!')
 
   // clear board
@@ -73,17 +73,68 @@ const onSignOutSuccess = function () {
   $('#game-alert').removeClass().addClass('game-message text-info').text('New local game! Sign in to save progress. X Player\'s turn.')
 }
 
-const onFailure = function () {
-  // display success message
-  $('#user-message').removeClass().addClass('alert alert-danger margin-top')
-  $('#user-message').fadeIn(200).delay(2000).fadeOut(200)
-  $('#user-message').text('Uh-oh, something went wrong. try again!')
+const onSignUpFailure = function (error) {
+  const statusCode = error.status.toString()
+  // display failure messages
+  if (statusCode.startsWith('4')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('Error. Use a different username/password and try again!')
+  } else if (statusCode.startsWith('5')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('Problems connecting to server. Try again later!')
+  }
 }
 
+const onSignInFailure = function (error) {
+  const statusCode = error.status.toString()
+  // display failure messages
+  if (statusCode.startsWith('4')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('Username/password incorrect. Try again!')
+  } else if (statusCode.startsWith('5')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('Problems connecting to server. Try again later!')
+  }
+}
+
+const onChangePassFailure = function (error) {
+  const statusCode = error.status.toString()
+  // display failure messages
+  if (statusCode.startsWith('4')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('Old password incorrect. Try again!')
+  } else if (statusCode.startsWith('5')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('Problems connecting to server. Try again later!')
+  }
+}
+
+const onSignOutFailure = function (error) {
+  const statusCode = error.status.toString()
+  // display failure messages
+  if (statusCode.startsWith('4')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('This ususally never happens. Try again!')
+  } else if (statusCode.startsWith('5')) {
+    $('#user-message').removeClass().addClass('alert alert-danger margin-top')
+    $('#user-message').slideDown(200).delay(2500).slideUp(200)
+    $('#user-message').text('Problems connecting to server. Try again later!')
+  }
+}
 module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
   onChangePassSuccess,
   onSignOutSuccess,
-  onFailure
+  onSignUpFailure,
+  onSignInFailure,
+  onChangePassFailure,
+  onSignOutFailure
 }

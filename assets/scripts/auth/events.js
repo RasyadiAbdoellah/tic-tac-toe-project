@@ -63,7 +63,7 @@ const onSignUp = function (event) {
   event.preventDefault()
   // console.log('sign up triggered')
   const data = getFormFields(event.target)
-  api.signUp(data).then(ui.onSignUpSuccess).catch(ui.onFailure)
+  api.signUp(data).then(ui.onSignUpSuccess).catch(ui.onSignUpFailure)
 }
 
 const onSignIn = function (event) {
@@ -77,20 +77,20 @@ const onSignIn = function (event) {
           store.game = data.game
         })
     }).then(refreshStats)
-    .catch(ui.onFailure)
+    .catch(ui.onSignInFailure)
 }
 
 const onChangePass = function (event) {
   event.preventDefault()
   // console.log('change pw triggered')
   const data = getFormFields(event.target)
-  api.changePass(data).then(ui.onChangePassSuccess).catch(ui.onFailure)
+  api.changePass(data).then(ui.onChangePassSuccess).catch(ui.onChangePassFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
   // console.log('sign out triggered')
-  api.signOut().then(ui.onSignOutSuccess).catch(ui.onFailure)
+  api.signOut().then(ui.onSignOutSuccess).catch(ui.onSignOutFailure)
 }
 
 const addHandler = function (event) {
