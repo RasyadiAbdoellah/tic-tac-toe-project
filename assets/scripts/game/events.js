@@ -15,7 +15,7 @@ const onCellClick = function (event) {
   const currentCell = $(this)
   const cellVal = $(this).attr('data-value')
   if (!board.over && !board.collisionCheck(cellVal)) {
-    if (store.user === undefined) {
+    if (!store.user) {
       board.play(cellVal)
       ui.placeTokenInCell(currentCell, board.currentPlayer.toUpperCase())
     } else {
@@ -40,8 +40,8 @@ const onCellClick = function (event) {
 
 const onClearBoard = function () {
   // refresh stats to reflect new game
-  userEvents.refreshStats()
   if (store.user) {
+    userEvents.refreshStats()
     api.createGame().then(data => {
       store.game = data.game
     }).then(ui.resetBoardUi)
