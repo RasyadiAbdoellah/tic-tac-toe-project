@@ -36,7 +36,7 @@ My rough action plan for tackling the project is as follows
 - third phase: user interface and interacting with the board
 - fourth phase: UI polish, testing, rolling deployment
 
-After looking at the example schedule, I chose to closely follow that instead. Below is the schedule I followed.
+After looking at the example schedule, I modified my plan to match. Below is the plan I followed.
 
 ##### Planning
 1.  User Stories
@@ -44,7 +44,7 @@ After looking at the example schedule, I chose to closely follow that instead. B
 
 ##### Set Up
 1.  Set up boilerplate
-1.  Create a Github Repository
+1.  Create Github Repository
 1.  Deploy to Github Pages
 
 ##### Game Engine
@@ -100,10 +100,10 @@ Interacting with the game squares is handled by a single jQuery event handler. S
 
 An interesting piece of functionality is the stats panel. I wanted to show not only total games played, but also games won, games lost, games tied, and any open games available to replay. Calculating win/lose/tie statistics was an interesting challenge because of the way I designed the engine. The GET request for a user's past games returns an array of game objects. The function that determines who won is a prototype of the engine's Game object, the only way I was able to use the function to calculate win/lose stats of past games without completely reworking the engine was to create a temporary Game object and copy the cells from each array object to the temp Game. Then using closures and a counter for win/lose/tie, I used .forEach() and an annonymous callback function to correctly determine the stats.
 
-## To-do for Future Iteration
+## To-do for Future Iterations
 
--Improve mobile UI/UX - scrolling is necessary for some of the user actions. Looking into implementing the burger button, or accordion collapsible panels.
+- Improve mobile UI/UX - scrolling is necessary for some of the user actions. Looking into implementing the burger button, or accordion collapsible panels.
 
--Multiplayer
+- Multiplayer
 
--Customizable X/O icons
+- Customizable X/O icons
