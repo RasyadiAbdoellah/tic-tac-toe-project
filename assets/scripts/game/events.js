@@ -8,9 +8,11 @@ const api = require('./api')
 const userApi = require('../auth/api')
 const userEvents = require('../auth/events')
 
+// board is an instance of Game object that can be imported to other js files. Needed mostly for resumeLastGame functionality
 const board = require('./board')
 
 const onCellClick = function (event) {
+  /* Function is called when a cell is clicked. Checks if the game is not over and currentCell has no value. Then checks store.user. Only sends out a PATCH request when there is a user, and stores the returned updated value in store. */
   // console.log(event.target)
   const currentCell = $(this)
   const cellVal = $(this).attr('data-value')
@@ -39,8 +41,9 @@ const onCellClick = function (event) {
 }
 
 const onClearBoard = function () {
-  // refresh stats to reflect new game
+  /* called when user wants a new game. Function first checks for the existence of user credentials. Refreshes stats and sends a POST request for a new game and stores the returned values to store. a UI function to reset board is called. Lastly the board instance of Game is reset */
   if (store.user) {
+    // refresh stats to reflect new game
     userEvents.refreshStats()
     api.createGame().then(data => {
       store.game = data.game

@@ -100,10 +100,15 @@ Interacting with the game squares is handled by a single jQuery event handler. S
 
 An interesting piece of functionality is the stats panel. I wanted to show not only total games played, but also games won, games lost, games tied, and any open games available to replay. Calculating win/lose/tie statistics was an interesting challenge because of the way I designed the engine. The GET request for a user's past games returns an array of game objects. The function that determines who won is a prototype of the engine's Game object, the only way I was able to use the function to calculate win/lose stats of past games without completely reworking the engine was to create a temporary Game object and copy the cells from each array object to the temp Game. Then using closures and a counter for win/lose/tie, I used .forEach() and an annonymous callback function to correctly determine the stats.
 
-## To-do for Future Iterations
+## Wishlist for Future Iterations
 
-- Improve mobile UI/UX - scrolling is necessary for some of the user actions. Looking into implementing the burger button, or accordion collapsible panels.
+- Improve mobile UI/UX
+ - Scrolling is necessary for some of the user actions. Looking into implementing the burger button, or accordion collapsible panels.
+
+
+- Improve resume open game functionality
+  - The function as it is currently designed assigns the last object in the array returned from a GET /games?over=false request to the store object, then assigns the store.cell array to the game engine's .cell array. It then calls a ui function that iterates through the local cell array and places the value on to the board. Since every sign in starts a new game, the last game in the returned array will always be blank. Possible improvements for this functionality is the ability to view a list of past games and select which one to load.
+
 
 - Multiplayer
-
 - Customizable X/O icons

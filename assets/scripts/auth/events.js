@@ -17,7 +17,7 @@ The reason for having the stats api calls here is that:
 3) User stats need an auth header.
 */
 
-// Game win/lose/tie stats callback function
+// Game win/lose/tie stats callback function called during GET over=true request
 const calculateStats = (data) => {
   store.gamesOver = data.games
   let timesWon = 0
