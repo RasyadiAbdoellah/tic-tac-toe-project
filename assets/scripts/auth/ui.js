@@ -8,8 +8,10 @@ const boardUi = require('../game/ui')
 
 const onSignUpSuccess = function (data) {
   // console.log(data)
-  // clear input
-  $('#sign-up input').val('')
+  // clear email, pw, pw_confirm input
+  $('#sign-up input[name="credentials[email]"]').val('')
+  $('#sign-up input[name="credentials[password]"]').val('')
+  $('#sign-up input[name="credentials[password_confirmation]"]').val('')
 
   // show form message
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
@@ -23,8 +25,9 @@ const onSignInSuccess = function (data) {
   // explicitely hide the form message on success
   $('#user-message').hide()
 
-  // clear input
-  $('#sign-in input').val('')
+  // clear email, pw input
+  $('#sign-in input[name="credentials[email]"]').val('')
+  $('#sign-in input[name="credentials[password]"]').val('')
 
   // display success message
   // clear all classes
