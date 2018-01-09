@@ -65,26 +65,30 @@ const onResumeGame = function () {
   // refreshes the stored open games array just to be safe
   userApi.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games
-    // check if there are any games where over = false
-    if (store.gamesOpen.length !== 0) {
-      store.game = store.gamesOpen[store.gamesOpen.length - 1]
-      board.cells = store.game.cells
-      board.over = store.game.over
-      let xCount = 0
-      let oCount = 0
-      for (let i = 0; i < board.cells.length; i++) {
-        if (board.cells[i] === 'x') {
-          xCount++
-        } else if (board.cells[i] === 'o') {
-          oCount++
+
+    // blocks the code below from running if the store.gamesOpen is empty or the length is 0
+    if (store.gamesOpen && store.gamesOpen.length !== 0) {
+      // check if there is more than 1 open game and the last game.id is not the same as the current game.id
+      if (store.gamesOpen.length >= 2 && store.game.id !== store.gamesOpen[store.gamesOpen.length - 1].id) {
+        store.game = store.gamesOpen[store.gamesOpen.length - 1]
+        board.cells = store.game.cells
+        board.over = store.game.over
+        let xCount = 0
+        let oCount = 0
+        for (let i = 0; i < board.cells.length; i++) {
+          if (board.cells[i] === 'x') {
+            xCount++
+          } else if (board.cells[i] === 'o') {
+            oCount++
+          }
         }
+        if (xCount > oCount) {
+          board.currentPlayer = 'o'
+        } else if (oCount >= xCount) {
+          board.currentPlayer = 'x'
+        }
+        ui.resumeLastGame(board)
       }
-      if (xCount > oCount) {
-        board.currentPlayer = 'o'
-      } else if (oCount >= xCount) {
-        board.currentPlayer = 'x'
-      }
-      ui.resumeLastGame(board)
     } else {
       $('#user-message').removeClass()
       $('#user-message').addClass('alert alert-warning margin-top').text('No open games to resume!')
