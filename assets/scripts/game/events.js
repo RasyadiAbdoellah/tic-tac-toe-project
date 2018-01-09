@@ -56,7 +56,7 @@ const onClearBoard = function () {
   board.clearBoard()
 }
 
-const onResumeGame = function () {
+const onResumePreviousGame = function () {
   /* Function to resume last game. runs a GET games?over=false request. Then takes last game in store.gamesOpen and saves it to current game in store.game. Then assigns cells in board to match cells in store.game. Function then counts the number of x's and o's in the board cells and assigns the right currentPlayer. Finally, function prints cell values to grid. */
 
   // refreshes stats displayed in user panel first
@@ -65,12 +65,14 @@ const onResumeGame = function () {
   // refreshes the stored open games array just to be safe
   userApi.getStatsOverFalse().then((data) => {
     store.gamesOpen = data.games
-
+    console.log('refreshStats')
     // blocks the code below from running if the store.gamesOpen is empty or the length is 0
     if (store.gamesOpen && store.gamesOpen.length !== 0) {
+      console.log('first conditional')
       // check if there is more than 1 open game and the last game.id is not the same as the current game.id
-      if (store.gamesOpen.length >= 2 && store.game.id !== store.gamesOpen[store.gamesOpen.length - 1].id) {
-        store.game = store.gamesOpen[store.gamesOpen.length - 1]
+      if (store.gamesOpen.length >= 2) {
+        console.log('second conditional')
+        store.game = store.gamesOpen[store.gamesOpen.length - 2]
         board.cells = store.game.cells
         board.over = store.game.over
         let xCount = 0
@@ -87,11 +89,15 @@ const onResumeGame = function () {
         } else if (oCount >= xCount) {
           board.currentPlayer = 'x'
         }
-        ui.resumeLastGame(board)
+        ui.resumeGame(board)
+      } else {
+        $('#user-message').removeClass()
+        $('#user-message').addClass('alert alert-warning margin-top').text('No previous games to resume!')
+        $('#user-message').slideDown(200).delay(2500).slideUp(200)
       }
     } else {
       $('#user-message').removeClass()
-      $('#user-message').addClass('alert alert-warning margin-top').text('No open games to resume!')
+      $('#user-message').addClass('alert alert-warning margin-top').text('No more games to resume!')
       $('#user-message').slideDown(200).delay(2500).slideUp(200)
     }
   })
@@ -102,7 +108,7 @@ const addHandler = function (event) {
 
   $('.cell').on('click', onCellClick)
   $('#reset-board').on('click', onClearBoard)
-  $('#resume-last-game').on('click', onResumeGame)
+  $('#resume-previous-game').on('click', onResumePreviousGame)
 }
 
 module.exports = {

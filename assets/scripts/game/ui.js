@@ -26,7 +26,7 @@ const resetBoardUi = function () {
   }
 }
 
-const resumeLastGame = function (board) {
+const resumeGame = function (board) {
   for (let i = 0; i < board.cells.length; i++) {
     $('.cell[data-value="' + i + '"]').children().text(board.cells[i].toUpperCase())
   }
@@ -49,6 +49,6 @@ module.exports = {
   showStalemateMessage,
   resetBoardUi,
   placeTokenInCell,
-  resumeLastGame,
+  resumeGame,
   boardUiUpdateFail
 }
