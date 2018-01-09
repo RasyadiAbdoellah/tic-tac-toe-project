@@ -26,11 +26,11 @@ const resetBoardUi = function () {
   }
 }
 
-const resumeGame = function (board) {
+const resumeGame = function (board, gameID) {
   for (let i = 0; i < board.cells.length; i++) {
     $('.cell[data-value="' + i + '"]').children().text(board.cells[i].toUpperCase())
   }
-  $('#game-alert').removeClass().addClass('game-message text-info').text('Game resumed! It\'s ' + board.currentPlayer.toUpperCase() + ' Player\'s turn.')
+  $('#game-alert').removeClass().addClass('game-message text-info').text('Open game ID:' + gameID + ' resumed! It\'s ' + board.currentPlayer.toUpperCase() + ' Player\'s turn.')
 }
 
 const placeTokenInCell = function (currentCell, playerToken) {

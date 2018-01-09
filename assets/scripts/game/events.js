@@ -89,7 +89,26 @@ const onResumePreviousGame = function () {
         } else if (oCount >= xCount) {
           board.currentPlayer = 'x'
         }
-        ui.resumeGame(board)
+        ui.resumeGame(board, store.gamesOpen[store.gamesOpen.length - 2].id)
+      } else if (store.gamesOpen.length === 1 && store.gamesOpen[store.gamesOpen.length - 1].id !== store.game.id) {
+        store.game = store.gamesOpen[store.gamesOpen.length - 1]
+        board.cells = store.game.cells
+        board.over = store.game.over
+        let xCount = 0
+        let oCount = 0
+        for (let i = 0; i < board.cells.length; i++) {
+          if (board.cells[i] === 'x') {
+            xCount++
+          } else if (board.cells[i] === 'o') {
+            oCount++
+          }
+        }
+        if (xCount > oCount) {
+          board.currentPlayer = 'o'
+        } else if (oCount >= xCount) {
+          board.currentPlayer = 'x'
+        }
+        ui.resumeGame(board, store.gamesOpen[store.gamesOpen.length - 1].id)
       } else {
         $('#user-message').removeClass()
         $('#user-message').addClass('alert alert-warning margin-top').text('No previous games to resume!')
