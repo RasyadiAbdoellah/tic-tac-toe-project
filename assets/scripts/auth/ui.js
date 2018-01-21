@@ -51,7 +51,9 @@ const onSignInSuccess = function (data) {
 const onChangePassSuccess = function () {
   // console.log('pw changed')
   // clear input
-  $('#change-password input').val('')
+  $('#change-password input[name="passwords[old]"]').val('')
+  $('#change-password input[name="passwords[new]"]').val('')
+  
 
   // display success message
   $('#user-message').removeClass().addClass('alert alert-success margin-top')
