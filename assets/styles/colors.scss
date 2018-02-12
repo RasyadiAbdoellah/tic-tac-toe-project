@@ -1,2 +1,10 @@
 $grid-border-color: #002130;
-$background-color: #fafafa;
+$background-color: #95c4eb;
+
+@mixin gradient-vertical($start-color, $end-color) {
+    background-image: -webkit-linear-gradient(top, $start-color, $end-color );  // Safari 5.1-6, Chrome 10+
+    background-image: -o-linear-gradient(top, $start-color, $end-color );  // Opera 12
+    background-image: linear-gradient($start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+    background-repeat: repeat-x;
+    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+  }

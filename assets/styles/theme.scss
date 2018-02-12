@@ -1,7 +1,10 @@
 @import './colors';
+@import './typography';
 
 body {
-  background: $background-color;
+  @include gradient-vertical(white, $background-color);
+  min-height: 100vh;
+  // background: $background-color;
 }
 
 form {
@@ -32,4 +35,8 @@ form {
 
 .board {
   margin-bottom: 5%;
+}
+
+.heading {
+  font-size: $heading-size;
 }
